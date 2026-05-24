@@ -67,7 +67,7 @@ main {
   color: #f8fbfb;
   background:
     linear-gradient(115deg, rgba(0, 52, 93, 0.98), rgba(6, 40, 74, 0.92)),
-    url("/chart-texture.svg");
+    url("chart-texture.svg");
   background-size: cover;
   border-radius: 8px;
   box-shadow: 0 20px 50px rgba(0, 52, 93, 0.2);
