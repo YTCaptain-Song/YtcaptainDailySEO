@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from "react";
 import rawLogs from "./data/logs.json";
 import type { CategoryFilter, LogEntry, LogType, TypeFilter } from "./types";

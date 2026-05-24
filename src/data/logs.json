@@ -1,60 +1,123 @@
 [
   {
-    "id": "seo-rendering-checklist-2026-05-24",
-    "title": "技术型页面上线前的索引渲染检查清单",
-    "category": "SEO",
-    "type": "practice",
-    "publishedAt": "2026-05-24T08:45:00+08:00",
-    "sourceName": "Search Console 实操笔记",
-    "sourceUrl": "https://example.com/seo-rendering-checklist",
-    "summary": "用 URL 检查、结构化数据测试和日志样本三步确认新页面是否能被搜索引擎完整理解。",
-    "mainContent": "上线前先抽样检查模板页、详情页和分页页，确认服务端返回关键正文、Canonical 与结构化数据一致。上线后 2 小时内复查抓取状态，发现仅客户端渲染内容缺失时优先补 SSR 或静态摘要。",
-    "tags": ["索引", "渲染", "技术SEO", "上线检查"]
-  },
-  {
-    "id": "sem-negative-keywords-2026-05-24",
-    "title": "用搜索词报告快速清理低意图 SEM 流量",
-    "category": "SEM",
-    "type": "practice",
-    "publishedAt": "2026-05-24T11:20:00+08:00",
-    "sourceName": "投放复盘日报",
-    "summary": "按花费、无转化点击和跳出信号筛出低意图词，批量加入否定关键词并保留观察列表。",
-    "mainContent": "先按过去 7 天花费排序，标记与核心转化无关的搜索词；再筛点击量高但无询盘的词组，区分完全否定和词组否定。调整后 24 小时复盘展示份额和转化成本，避免误伤高潜力长尾词。",
-    "tags": ["否定关键词", "搜索词报告", "转化成本"]
-  },
-  {
-    "id": "seo-ai-overview-news-2026-05-23",
-    "title": "搜索结果 AI 摘要继续改变内容点击路径",
-    "category": "SEO",
-    "type": "news",
-    "publishedAt": "2026-05-23T21:10:00+08:00",
-    "sourceName": "行业资讯汇编",
-    "sourceUrl": "https://example.com/search-ai-overview",
-    "summary": "越来越多信息型查询先被 AI 摘要承接，内容页需要更清楚地呈现原始经验、数据和可验证细节。",
-    "mainContent": "信息型内容不能只复述通用答案，建议增加真实测试过程、数据截图说明、专家署名和可引用来源，让页面在摘要之后仍有被点击的理由。",
-    "tags": ["AI搜索", "内容策略", "点击率"]
-  },
-  {
-    "id": "sem-creative-testing-archive-2026-05-22",
-    "title": "广告创意测试不要一次只换标题",
-    "category": "SEM",
-    "type": "practice",
-    "publishedAt": "2026-05-22T16:30:00+08:00",
-    "sourceName": "历史投放案例",
-    "sourceUrl": "https://example.com/sem-creative-test",
-    "summary": "归档示例：把卖点、证明材料和行动号召组合成测试矩阵，比单独改标题更容易定位增量来源。",
-    "mainContent": "每轮至少建立 3 个明确假设：价格敏感、效率诉求、服务保障。每个假设对应标题、描述和落地页首屏一致的素材组合，避免广告与页面承诺脱节。",
-    "tags": ["创意测试", "A/B测试", "归档"]
-  },
-  {
-    "id": "seo-empty-tags-example-2026-05-24",
-    "title": "无标签内容也应保持卡片稳定",
+    "id": "google-may-2026-core-update-rollout-2026-05-24",
+    "title": "Google May 2026 核心更新正在 rollout",
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-24T13:05:00+08:00",
-    "sourceName": "版式测试条目",
-    "summary": "这条用于验证没有来源链接、没有标签时，页面仍能正常展示。",
-    "mainContent": "真实维护内容时，sourceUrl 和 tags 可以为空；页面会隐藏对应区域，避免出现空白符号或破碎链接。",
-    "tags": []
+    "sourceName": "Search Engine Land / Search Engine Journal",
+    "summary": "Google 本月第二轮核心算法更新已启动，预计 1-2 周完成，重点影响内容质量、用户体验和权威性。",
+    "mainContent": "建议不要因为短期波动立刻大范围改站。先在 Search Console 中标记受影响页面，观察查询、页面类型和流量来源变化，再优先强化 E-E-A-T、用户意图匹配和页面体验。",
+    "tags": ["Google核心更新", "E-E-A-T", "Search Console", "内容质量"]
+  },
+  {
+    "id": "google-ai-search-aeo-geo-seo-basics-2026-05-24",
+    "title": "Google AI 搜索指导：AEO/GEO 仍离不开 SEO 基础",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-24T12:40:00+08:00",
+    "sourceName": "Google Search Central",
+    "summary": "Google 近期生成式 AI 优化资源强调，权威内容、相关性和用户需求满足仍是 AI 搜索可见度的核心。",
+    "mainContent": "不要把 llms.txt、复杂切块或投机技巧当作主要策略。更值得做的是让页面直接回答真实用户问题，补充经验、证据、来源和结构化信息，让 AI Overviews 更容易识别你是可信来源。",
+    "tags": ["AEO", "GEO", "AI Overviews", "Google官方"]
+  },
+  {
+    "id": "google-ai-mode-new-ad-formats-2026-05-24",
+    "title": "Google 测试 AI Mode 下的新广告格式",
+    "category": "SEM",
+    "type": "news",
+    "publishedAt": "2026-05-24T11:55:00+08:00",
+    "sourceName": "X @yidabuilds / Hacker News",
+    "summary": "Google 正在测试在 AI Overviews 下方嵌入产品推荐和 Direct Offers，用户可能不离开搜索页就完成购买决策。",
+    "mainContent": "独立站和广告主需要关注 AI 搜索环境下剩余点击的竞争。购物类页面应强化商品结构化数据、价格与库存信息、首屏转化路径和评价信号，提升在 AI 结果与广告场景中的可见度。",
+    "tags": ["AI Mode", "Google Ads", "Direct Offers", "购物广告"]
+  },
+  {
+    "id": "google-search-box-ai-redesign-2026-05-24",
+    "title": "Google 搜索框 25 年来最大改版：AI 重构搜索路径",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-24T11:20:00+08:00",
+    "sourceName": "X @yidabuilds",
+    "summary": "Google 搜索正在从“给 10 个链接”转向“帮用户办成事”，AI Overviews 和 AI Mode 的覆盖持续扩大。",
+    "mainContent": "建议新增一个日常监测维度：核心关键词下 AI Overviews 的出现比例、引用来源和页面点击变化。传统排名仍要看，但需要同时观察品牌是否被 AI 答案引用。",
+    "tags": ["AI搜索", "AI Overviews", "排名监测", "SERP变化"]
+  },
+  {
+    "id": "machine-readable-brand-entity-hub-2026-05-24",
+    "title": "AI 搜索时代品牌需要“机器可读”",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-24T10:35:00+08:00",
+    "sourceName": "Search Engine Land",
+    "summary": "品牌可见度正在从传统关键词排名扩展到实体理解、结构化数据和 AI 引用。",
+    "mainContent": "建议为品牌、产品、服务、创始人、案例和行业主题建立实体枢纽。页面之间用清晰内链和一致术语连接，并补充结构化数据、FAQ、案例证据和外部权威引用，帮助搜索引擎与 AI 系统理解品牌关系。",
+    "tags": ["实体SEO", "结构化数据", "Entity Hub", "品牌SEO"]
+  },
+  {
+    "id": "focus-high-value-seo-not-fix-everything-2026-05-24",
+    "title": "不要 Fix Everything：SEO 优先处理高价值机会",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-24T09:50:00+08:00",
+    "sourceName": "X @RoshanAmblerRSA / Search Engine Land",
+    "summary": "全面修复并不一定带来增长，应优先处理高影响页面、转化机会和业务价值更明确的问题。",
+    "mainContent": "可用 Gemini、Claude 等 AI 工具加速 SEO 审计、内容差距分析和报告初稿，但最终排序要结合业务上下文。优先看能带来询盘、订单、订阅或品牌权威的页面，而不是平均用力修所有问题。",
+    "tags": ["SEO审计", "AI工具", "优先级", "内容差距"]
+  },
+  {
+    "id": "modern-seo-blueprint-semantic-ai-optimization-2026-05-24",
+    "title": "现代 SEO 蓝图：高级关键词、语义和 AI 优化",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-24T09:10:00+08:00",
+    "sourceName": "LinkedIn @mohammed_mia",
+    "summary": "现代 SEO 更强调语义覆盖和意图匹配，而不是单纯堆关键词。",
+    "mainContent": "内容规划时先拆分用户意图，再围绕主题实体、相关问题、对比维度和实际决策点组织页面。标题和正文要直接解决需求，让人和 AI 都能快速判断页面价值。",
+    "tags": ["语义SEO", "关键词研究", "搜索意图", "AI优化"]
+  },
+  {
+    "id": "local-seo-consistent-updates-2026-05-23",
+    "title": "本地 SEO 实操：持续更新比花招更重要",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-23T22:45:00+08:00",
+    "sourceName": "X @fukuro_y__coder",
+    "summary": "地方企业在 Google Maps 和本地搜索中胜出，往往靠长期更新照片、信息和服务细节。",
+    "mainContent": "多数竞品做不到持续维护。建议每月更新门店照片、产品图、营业信息、服务说明和客户评价回复；中文市场的地图、本地生活平台和独立站本地页也适用这个思路。",
+    "tags": ["本地SEO", "Google Maps", "门店优化", "持续更新"]
+  },
+  {
+    "id": "seo-traffic-tracking-quality-sessions-2026-05-23",
+    "title": "SEO 流量追踪新思路：少看全量，多看质量",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-23T21:30:00+08:00",
+    "sourceName": "Search Engine Land",
+    "summary": "有机流量仍值得追踪，但更应关注高质量会话、转化和业务结果，而不是所有点击。",
+    "mainContent": "建议把自然流量拆成品牌词、非品牌词、内容型入口、产品型入口和转化路径。重点看带来询盘、加购、订阅或深度浏览的会话，同时结合 AI Overviews 出现率判断点击变化原因。",
+    "tags": ["SEO数据", "转化追踪", "高质量流量", "GA4"]
+  },
+  {
+    "id": "linkedin-personal-seo-profile-optimization-2026-05-23",
+    "title": "LinkedIn 个人 SEO：标题和 About 也要可搜索",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-23T19:45:00+08:00",
+    "sourceName": "LinkedIn / X 讨论",
+    "summary": "个人主页也有搜索优化空间，尤其是标题、About、技能词和服务关键词。",
+    "mainContent": "可以用提示词生成多个标题版本，把岗位、行业、核心技能和结果导向词放进标题与 About 中。适合招聘搜索、顾问获客、B2B 个人品牌和外贸业务开发。",
+    "tags": ["LinkedIn SEO", "个人品牌", "招聘搜索", "B2B获客"]
+  },
+  {
+    "id": "japan-seo-news-reddit-programmatic-seo-2026-05-23",
+    "title": "日本 SEO 新闻与 Reddit 讨论：程序化 SEO、HEO 和 AI 搜索",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-23T17:30:00+08:00",
+    "sourceName": "日本 SEO 新闻汇总 / Reddit",
+    "summary": "5 月 23 日日本 SEO 汇总关注 Google 搜索、AI Overview、Discover；Reddit 则热议程序化 SEO 和 HEO。",
+    "mainContent": "旅行 affiliate、程序化页面、2026 SEO 预期和 HEO（Hybrid Engine Optimization）讨论活跃。可借鉴的重点是：规模化内容必须有真实数据、可筛选体验和独特价值，否则很容易被 AI 摘要和核心更新削弱。",
+    "tags": ["程序化SEO", "HEO", "Discover", "Reddit讨论"]
   }
 ]
