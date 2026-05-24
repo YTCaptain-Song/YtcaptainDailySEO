@@ -192,19 +192,71 @@ h1 {
   position: sticky;
   top: 16px;
   display: grid;
-  gap: 18px;
-  padding: 18px;
+  gap: 14px;
+  padding: 16px;
   border: 1px solid var(--captain-line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 30px rgba(16, 36, 58, 0.06);
 }
 
 .latest-workspace .filters {
   position: static;
-  grid-template-columns: minmax(220px, 0.9fr) minmax(260px, 1.2fr) minmax(220px, 1fr);
-  align-items: end;
+  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
   margin-bottom: 4px;
   background: rgba(255, 255, 255, 0.94);
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.filter-title {
+  display: block;
+  color: var(--captain-ink);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.filter-header p {
+  margin: 4px 0 0;
+  color: #667982;
+  font-size: 0.88rem;
+}
+
+.clear-filters {
+  min-width: 58px;
+  min-height: 34px;
+  border: 1px solid #c8d8e4;
+  border-radius: 6px;
+  color: var(--captain-blue);
+  background: #ffffff;
+  font-weight: 800;
+}
+
+.clear-filters:disabled {
+  opacity: 0.45;
+}
+
+.clear-filters:not(:disabled):hover {
+  border-color: var(--captain-bright-blue);
+  color: var(--captain-bright-blue);
+}
+
+.filter-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.latest-workspace .filter-controls {
+  grid-template-columns: minmax(240px, 0.9fr) minmax(320px, 1.25fr) minmax(240px, 1fr);
+  align-items: end;
 }
 
 .filter-block {
@@ -221,10 +273,6 @@ h1 {
   background: #eef4f7;
 }
 
-.segmented.vertical {
-  grid-template-columns: 1fr;
-}
-
 .search-box input {
   width: 100%;
   min-height: 44px;
@@ -233,6 +281,12 @@ h1 {
   border-radius: 6px;
   color: var(--captain-ink);
   background: #ffffff;
+}
+
+.search-box input:focus {
+  border-color: var(--captain-bright-blue);
+  box-shadow: 0 0 0 3px rgba(36, 103, 232, 0.14);
+  outline: 0;
 }
 
 .timeline,
@@ -255,11 +309,13 @@ h1 {
   border-radius: 8px;
   color: #ffffff;
   background:
-    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.14) 0 32px, transparent 34px),
-    radial-gradient(circle at 92% 44%, rgba(255, 255, 255, 0.1) 0 42px, transparent 44px),
-    radial-gradient(circle at 60% 74%, rgba(255, 255, 255, 0.1) 0 28px, transparent 30px),
-    linear-gradient(125deg, #1267e9 0%, #3340d7 54%, #3b25a6 100%);
-  box-shadow: 0 22px 54px rgba(36, 103, 232, 0.24);
+    radial-gradient(circle at 82% 18%, rgba(255, 208, 87, 0.16) 0 32px, transparent 34px),
+    radial-gradient(circle at 92% 44%, rgba(255, 255, 255, 0.08) 0 42px, transparent 44px),
+    radial-gradient(circle at 60% 74%, rgba(255, 208, 87, 0.12) 0 28px, transparent 30px),
+    linear-gradient(115deg, rgba(0, 52, 93, 0.98), rgba(6, 40, 74, 0.94)),
+    url("chart-texture.svg");
+  background-size: auto, auto, auto, cover, cover;
+  box-shadow: 0 22px 54px rgba(0, 52, 93, 0.22);
 }
 
 .digest-copy {
@@ -290,10 +346,10 @@ h1 {
   align-items: center;
   min-height: 32px;
   padding: 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 208, 87, 0.34);
   border-radius: 999px;
-  color: #eff6ff;
-  background: rgba(7, 29, 99, 0.24);
+  color: #fff5ce;
+  background: rgba(0, 28, 52, 0.35);
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -309,9 +365,9 @@ h1 {
 .digest-stats div {
   min-height: 104px;
   padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 208, 87, 0.32);
   border-radius: 8px;
-  background: rgba(5, 24, 88, 0.22);
+  background: rgba(0, 28, 52, 0.38);
 }
 
 .digest-stats span {
@@ -323,6 +379,7 @@ h1 {
 }
 
 .digest-stats strong {
+  color: var(--captain-gold-2);
   font-size: 2.4rem;
   line-height: 1;
 }
@@ -580,8 +637,13 @@ h1 {
   padding: 28px;
   border-radius: 8px;
   color: #ffffff;
-  background: linear-gradient(135deg, #163cbb 0%, #3030a8 62%, #281f83 100%);
-  box-shadow: 0 20px 48px rgba(37, 50, 160, 0.24);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255, 208, 87, 0.14) 0 36px, transparent 38px),
+    radial-gradient(circle at 8% 82%, rgba(255, 255, 255, 0.06) 0 44px, transparent 46px),
+    linear-gradient(115deg, rgba(0, 52, 93, 0.98), rgba(6, 40, 74, 0.95)),
+    url("chart-texture.svg");
+  background-size: auto, auto, cover, cover;
+  box-shadow: 0 20px 48px rgba(0, 52, 93, 0.2);
 }
 
 .action-panel h2 {
@@ -591,7 +653,7 @@ h1 {
 }
 
 .action-panel .section-kicker {
-  color: #ffffff;
+  color: var(--captain-gold-2);
 }
 
 .action-grid {
@@ -605,23 +667,23 @@ h1 {
   gap: 12px;
   min-height: 152px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 208, 87, 0.24);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 28, 52, 0.34);
 }
 
 .action-card strong {
-  color: #ffffff;
+  color: #fff5ce;
   font-size: 1rem;
 }
 
 .action-card li {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(239, 247, 245, 0.86);
 }
 
 .action-note {
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(239, 247, 245, 0.78);
 }
 
 .empty-state {

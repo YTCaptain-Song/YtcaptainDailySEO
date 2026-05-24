@@ -226,6 +226,7 @@ function FilterPanel({
   category,
   type,
   query,
+  resultCount,
   onCategory,
   onType,
   onQuery,
@@ -233,61 +234,81 @@ function FilterPanel({
   category: CategoryFilter;
   type: TypeFilter;
   query: string;
+  resultCount: number;
   onCategory: (value: CategoryFilter) => void;
   onType: (value: TypeFilter) => void;
   onQuery: (value: string) => void;
 }) {
+  const hasActiveFilters = category !== "all" || type !== "all" || query.trim().length > 0;
+  const clearFilters = () => {
+    onCategory("all");
+    onType("all");
+    onQuery("");
+  };
+
   return (
     <aside className="filters" aria-label="内容筛选">
-      <div className="filter-block">
-        <span className="filter-label">频道</span>
-        <div className="segmented">
-          {[
-            ["all", "全部"],
-            ["SEO", "SEO"],
-            ["SEM", "SEM"],
-          ].map(([value, label]) => (
-            <button
-              className={category === value ? "active" : ""}
-              key={value}
-              onClick={() => onCategory(value as CategoryFilter)}
-              type="button"
-            >
-              {label}
-            </button>
-          ))}
+      <div className="filter-header">
+        <div>
+          <span className="filter-title">内容筛选</span>
+          <p>{resultCount} 条匹配内容</p>
         </div>
+        <button className="clear-filters" disabled={!hasActiveFilters} onClick={clearFilters} type="button">
+          清除
+        </button>
       </div>
 
-      <div className="filter-block">
-        <span className="filter-label">类型</span>
-        <div className="segmented vertical">
-          {[
-            ["all", "全部内容"],
-            ["practice", "技术实操"],
-            ["news", "最新资讯"],
-          ].map(([value, label]) => (
-            <button
-              className={type === value ? "active" : ""}
-              key={value}
-              onClick={() => onType(value as TypeFilter)}
-              type="button"
-            >
-              {label}
-            </button>
-          ))}
+      <div className="filter-controls">
+        <div className="filter-block">
+          <span className="filter-label">频道</span>
+          <div className="segmented">
+            {[
+              ["all", "全部"],
+              ["SEO", "SEO"],
+              ["SEM", "SEM"],
+            ].map(([value, label]) => (
+              <button
+                className={category === value ? "active" : ""}
+                key={value}
+                onClick={() => onCategory(value as CategoryFilter)}
+                type="button"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <label className="search-box">
-        <span className="filter-label">关键词</span>
-        <input
-          onChange={(event) => onQuery(event.target.value)}
-          placeholder="标签、来源、主题"
-          type="search"
-          value={query}
-        />
-      </label>
+        <div className="filter-block">
+          <span className="filter-label">类型</span>
+          <div className="segmented">
+            {[
+              ["all", "全部内容"],
+              ["practice", "技术实操"],
+              ["news", "最新资讯"],
+            ].map(([value, label]) => (
+              <button
+                className={type === value ? "active" : ""}
+                key={value}
+                onClick={() => onType(value as TypeFilter)}
+                type="button"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <label className="search-box">
+          <span className="filter-label">关键词</span>
+          <input
+            onChange={(event) => onQuery(event.target.value)}
+            placeholder="标签、来源、主题"
+            type="search"
+            value={query}
+          />
+        </label>
+      </div>
     </aside>
   );
 }
@@ -560,6 +581,7 @@ export default function App() {
           onQuery={setQuery}
           onType={setType}
           query={query}
+          resultCount={view === "latest" ? latestLogs.length : archiveLogs.length}
           type={type}
         />
 
