@@ -11,6 +11,25 @@ const typeLabels: Record<LogType, string> = {
   news: "最新资讯",
 };
 
+const actionSections = [
+  {
+    title: "核心关注",
+    items: ["AI 搜索可见度", "Google 核心更新", "内容质量与用户意图"],
+  },
+  {
+    title: "实操重点",
+    items: ["强化 E-E-A-T", "补充结构化数据", "监测 AI Overviews 引用"],
+  },
+  {
+    title: "策略组合",
+    items: ["SEO 与 SEM 协同", "品牌实体枢纽", "高价值页面优先"],
+  },
+  {
+    title: "日常执行",
+    items: ["检查 Search Console", "记录排名和点击波动", "持续更新重点页面"],
+  },
+];
+
 function formatDateTime(value: string) {
   return new Intl.DateTimeFormat("zh-CN", {
     timeZone,
@@ -29,6 +48,14 @@ function formatDate(value: string | Date) {
     month: "2-digit",
     day: "2-digit",
     weekday: "short",
+  }).format(value instanceof Date ? value : new Date(value));
+}
+
+function formatShortDate(value: string | Date) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone,
+    month: "long",
+    day: "numeric",
   }).format(value instanceof Date ? value : new Date(value));
 }
 
@@ -52,6 +79,90 @@ function compareLogs(a: LogEntry, b: LogEntry) {
   if (timeDiff !== 0) return timeDiff;
   if (a.type !== b.type) return a.type === "practice" ? -1 : 1;
   return a.title.localeCompare(b.title, "zh-CN");
+}
+
+function countByType(items: LogEntry[], logType: LogType) {
+  return items.filter((item) => item.type === logType).length;
+}
+
+function countByCategory(items: LogEntry[], category: "SEO" | "SEM") {
+  return items.filter((item) => item.category === category).length;
+}
+
+function countByKeyword(items: LogEntry[], keyword: string) {
+  const lowerKeyword = keyword.toLowerCase();
+  return items.filter((item) =>
+    [item.title, item.summary, item.mainContent, ...item.tags].some((value) =>
+      value.toLowerCase().includes(lowerKeyword),
+    ),
+  ).length;
+}
+
+function getDateRange(items: LogEntry[]) {
+  if (items.length === 0) return "暂无匹配内容";
+  const sortedTimes = items
+    .map((item) => new Date(item.publishedAt).getTime())
+    .sort((a, b) => a - b);
+  const first = new Date(sortedTimes[0]);
+  const last = new Date(sortedTimes[sortedTimes.length - 1]);
+  const firstKey = dateKey(first);
+  const lastKey = dateKey(last);
+
+  return firstKey === lastKey
+    ? formatShortDate(last)
+    : `${formatShortDate(first)} - ${formatShortDate(last)}`;
+}
+
+function getTopTags(items: LogEntry[]) {
+  const counts = items.reduce<Record<string, number>>((acc, item) => {
+    item.tags.forEach((tag) => {
+      acc[tag] = (acc[tag] ?? 0) + 1;
+    });
+    return acc;
+  }, {});
+
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-CN"))
+    .slice(0, 5)
+    .map(([tag]) => tag);
+}
+
+function getOverview(items: LogEntry[]) {
+  const aiCount = countByKeyword(items, "AI");
+  const googleCount = countByKeyword(items, "Google");
+  const semCount = countByCategory(items, "SEM");
+  const topTags = getTopTags(items);
+
+  return [
+    {
+      title: "AI 搜索能见度",
+      metric: `${aiCount} 条`,
+      text: aiCount > 0 ? "AEO/GEO、AI Overviews 与机器可读内容是今日主线。" : "当前筛选下 AI 相关内容较少。",
+    },
+    {
+      title: "Google 变化",
+      metric: `${googleCount} 条`,
+      text: googleCount > 0 ? "核心更新、搜索路径与广告形态变化需要持续监测。" : "当前筛选下暂无明显 Google 主题。",
+    },
+    {
+      title: semCount > 0 ? "投放策略" : "高频主题",
+      metric: semCount > 0 ? `${semCount} 条` : `${topTags.length} 个`,
+      text:
+        semCount > 0
+          ? "SEM 重点转向 AI 场景、商品信号和转化路径。"
+          : topTags.length > 0
+            ? topTags.slice(0, 3).join("、")
+            : "等待更多日志形成趋势。",
+    },
+  ];
+}
+
+function splitAdvice(value: string) {
+  return value
+    .split(/[。；;]/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .slice(0, 3);
 }
 
 function filterLogs(
@@ -181,21 +292,36 @@ function FilterPanel({
   );
 }
 
-function LogCard({ item }: { item: LogEntry }) {
+function LogCard({ item, index }: { item: LogEntry; index?: number }) {
+  const advice = splitAdvice(item.mainContent);
+
   return (
     <article className={`log-card ${item.type}`}>
       <div className="card-meta">
+        {typeof index === "number" && <span className="card-number">{index + 1}</span>}
         <span className="badge">{item.category}</span>
         <span className="badge muted">{typeLabels[item.type]}</span>
         <time dateTime={item.publishedAt}>{formatDateTime(item.publishedAt)}</time>
       </div>
       <h3>{item.title}</h3>
-      <p className="summary">{item.summary}</p>
-      <p className="content">{item.mainContent}</p>
+      <div className="brief-box">
+        <span>{item.type === "practice" ? "实操观察" : "资讯要点"}</span>
+        <p className="summary">{item.summary}</p>
+      </div>
+      {advice.length > 0 && (
+        <div className="advice-list">
+          <strong>实践建议</strong>
+          <ul>
+            {advice.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="card-footer">
         {item.sourceUrl ? (
           <a href={item.sourceUrl} rel="noreferrer" target="_blank">
-            来源：{item.sourceName}
+            查看原文：{item.sourceName}
           </a>
         ) : (
           <span>来源：{item.sourceName}</span>
@@ -212,32 +338,106 @@ function LogCard({ item }: { item: LogEntry }) {
   );
 }
 
-function Timeline({ title, items }: { title: string; items: LogEntry[] }) {
-  const groups = groupByDate(items);
-  const keys = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+function DigestHero({ items, latestUpdated }: { items: LogEntry[]; latestUpdated: number }) {
+  const practiceCount = countByType(items, "practice");
+  const newsCount = countByType(items, "news");
+  const range = getDateRange(items);
 
   return (
-    <section className="timeline" aria-label={title}>
-      <div className="section-heading">
-        <span>{title}</span>
-        <strong>{items.length}</strong>
+    <header className="digest-hero">
+      <div className="digest-copy">
+        <p className="eyebrow">SEO / SEM Daily Briefing</p>
+        <h1>SEO 与 SEM 最新技术实操资讯简报</h1>
+        <p className="intro">{range}，精选高价值内容，聚焦搜索生态、AI 可见度和投放实战。</p>
+        <div className="digest-pills" aria-label="简报统计">
+          <span>{latestUpdated ? formatDate(new Date(latestUpdated)) : "暂无更新"}</span>
+          <span>近 24 小时精选</span>
+          <span>{items.length} 条高价值资讯</span>
+        </div>
       </div>
+      <div className="digest-stats" aria-label="内容构成">
+        <div>
+          <span>技术实操</span>
+          <strong>{practiceCount}</strong>
+        </div>
+        <div>
+          <span>行业资讯</span>
+          <strong>{newsCount}</strong>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function CoreOverview({ items }: { items: LogEntry[] }) {
+  const overview = getOverview(items);
+
+  return (
+    <section className="core-overview" aria-label="核心概览">
+      <div className="overview-heading">
+        <span>核心概览</span>
+        <p>把当天信息先压缩成判断，再进入逐条细读。</p>
+      </div>
+      <div className="overview-grid">
+        {overview.map((card) => (
+          <article className="overview-card" key={card.title}>
+            <strong>{card.title}</strong>
+            <span>{card.metric}</span>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ActionPanel({ total }: { total: number }) {
+  return (
+    <section className="action-panel" aria-label="行动建议">
+      <div>
+        <span className="section-kicker">行动建议</span>
+        <h2>基于过去 24 小时资讯，今天可以先做这些检查</h2>
+      </div>
+      <div className="action-grid">
+        {actionSections.map((section) => (
+          <article className="action-card" key={section.title}>
+            <strong>{section.title}</strong>
+            <ul>
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <p className="action-note">当前视图共 {total} 条内容，筛选后可作为今日 SEO / SEM 工作清单的输入。</p>
+    </section>
+  );
+}
+
+function DailyDigest({ items, latestUpdated }: { items: LogEntry[]; latestUpdated: number }) {
+  return (
+    <section className="daily-digest" aria-label="过去 24 小时简报">
+      <DigestHero items={items} latestUpdated={latestUpdated} />
       {items.length === 0 ? (
         <div className="empty-state">
           <h3>这片海域暂时风平浪静</h3>
           <p>当前筛选下没有匹配内容。可以换个频道、类型或关键词看看。</p>
         </div>
       ) : (
-        keys.map((key) => (
-          <div className="date-group" key={key}>
-            <h2>{formatDate(new Date(`${key}T12:00:00+08:00`))}</h2>
-            <div className="entries">
-              {groups[key].map((item) => (
-                <LogCard item={item} key={item.id} />
-              ))}
-            </div>
+        <>
+          <CoreOverview items={items} />
+          <div className="section-heading digest-section-heading">
+            <span>精选资讯</span>
+            <strong>{items.length}</strong>
           </div>
-        ))
+          <div className="entries digest-grid">
+            {items.map((item, index) => (
+              <LogCard index={index} item={item} key={item.id} />
+            ))}
+          </div>
+          <ActionPanel total={items.length} />
+        </>
       )}
     </section>
   );
@@ -321,7 +521,7 @@ export default function App() {
 
   return (
     <main>
-      <header className="masthead">
+      <header className="masthead site-header">
         <div className="logo-lockup">
           <img src="logo.png" alt="外贸老船长" />
         </div>
@@ -353,7 +553,7 @@ export default function App() {
         </button>
       </div>
 
-      <div className="workspace">
+      <div className={view === "latest" ? "workspace latest-workspace" : "workspace"}>
         <FilterPanel
           category={category}
           onCategory={setCategory}
@@ -364,7 +564,7 @@ export default function App() {
         />
 
         {view === "latest" ? (
-          <Timeline items={latestLogs} title="过去 24 小时" />
+          <DailyDigest items={latestLogs} latestUpdated={latestUpdated} />
         ) : (
           <Archive
             activeDate={now}
