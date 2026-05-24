@@ -1,3 +1,4 @@
+
 import { useMemo, useState } from "react";
 import rawLogs from "./data/logs.json";
 import type { CategoryFilter, LogEntry, LogType, TypeFilter } from "./types";
@@ -323,7 +324,7 @@ export default function App() {
     <main>
       <header className="masthead">
         <div className="logo-lockup">
-          <img src="/logo.png" alt="外贸老船长" />
+          <img src="logo.png" alt="外贸老船长" />
         </div>
         <div>
           <p className="eyebrow">SEO / SEM Daily Logbook</p>
