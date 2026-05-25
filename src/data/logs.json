@@ -1,5 +1,104 @@
 [
   {
+    "id": "ai-crawler-control-llms-txt-sameas-2026-05-25",
+    "title": "AI 时代技术 SEO 新增三件事：爬虫控制、llms.txt、sameAs",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-25T09:45:00+08:00",
+    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "summary": "除传统技术 SEO 外，AI 抓取与实体识别相关配置正在成为实操重点。",
+    "mainContent": "可先做轻量升级：在 robots.txt 明确 AI 爬虫访问策略；补充 llms.txt 供大模型快速理解站点内容；用 sameAs 关联 LinkedIn、Wikipedia 等权威实体页，提升品牌与企业信息的一致性识别。",
+    "tags": ["Technical SEO", "robots.txt", "llms.txt", "sameAs"]
+  },
+  {
+    "id": "b2b-longtail-keyword-combo-playbook-2026-05-25",
+    "title": "外贸 B2B 关键词实操：产品 + 地区 + 规格/认证 组合",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-25T09:35:00+08:00",
+    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "summary": "外贸询盘型流量更依赖长尾词组合，而不是只盯行业大词。",
+    "mainContent": "选词时优先围绕“产品词 + 目标地区 + 规格/认证”建组合页，并在产品页提供可验证的参数与资质信息。这样更接近采购搜索习惯，也更容易覆盖高意图需求。",
+    "tags": ["外贸SEO", "B2B营销", "长尾关键词", "询盘转化"]
+  },
+  {
+    "id": "b2b-site-tech-baseline-cdn-speed-multilingual-2026-05-25",
+    "title": "外贸独立站技术基线：速度、CDN、多语言与产品页深度",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-25T09:25:00+08:00",
+    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "summary": "在核心更新周期内，外贸站点的基础技术质量直接影响收录稳定性和买家信任。",
+    "mainContent": "优先确保页面速度与移动体验，使用 CDN 降低跨区访问延迟；多语言页面保持专业表达一致；产品详情补齐规格、认证、交付与案例信息，帮助搜索引擎和潜在客户同时判断可信度。",
+    "tags": ["外贸独立站", "网站速度", "CDN", "多语言SEO"]
+  },
+  {
+    "id": "google-may-2026-core-update-rollout-watch-2026-05-25",
+    "title": "Google May 2026 Core Update 持续 rollout：先观测再调整",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-25T09:20:00+08:00",
+    "sourceName": "Search Engine Land / Seroundtable",
+    "summary": "Google 5 月核心更新仍在推进阶段，预计约两周完成，内容相关性与有用性信号权重继续提升。",
+    "mainContent": "建议先按页面类型在 GSC 分组观察波动，不要因短期起伏立刻大改。优先检查页面是否真实解决用户问题，并补强本地场景所需的 LocalBusiness、FAQ、Review 等结构化信息。",
+    "tags": ["Google核心更新", "GSC", "内容质量", "本地SEO"]
+  },
+  {
+    "id": "geo-mainstream-ai-search-visibility-2026-05-25",
+    "title": "AI 搜索可见度进入主战场：GEO 从加分项变成必修项",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-25T09:00:00+08:00",
+    "sourceName": "行业公开讨论汇总（Google AI Overviews / ChatGPT / Perplexity）",
+    "summary": "搜索流量结构继续向 AI 答案层迁移，品牌是否被引用正在影响点击与转化入口。",
+    "mainContent": "除了传统排名，建议把“是否被 AI 引用”纳入日常监测：定期在 Perplexity、ChatGPT、Google AI Overviews 里检索核心主题，记录品牌露出、引用页面和更新频率，建立可复盘的 GEO 看板。",
+    "tags": ["GEO", "AI Overviews", "ChatGPT", "Perplexity"]
+  },
+  {
+    "id": "human-ai-hybrid-content-quality-2026-05-25",
+    "title": "AI 内容占比接近一半，但纯 AI 文本难跑出高表现",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-25T08:40:00+08:00",
+    "sourceName": "Search Engine Land 研究讨论",
+    "summary": "行业数据显示 AI 生成内容占比持续走高，但缺少真实经验与证据的页面在搜索中更容易失速。",
+    "mainContent": "更稳妥的做法是“人+AI”协同：AI 负责提纲与初稿，人负责加入一手经验、案例、数据和结论，最终形成更强 E-E-A-T 信号，避免低质批量内容带来的可见度风险。",
+    "tags": ["AI内容", "E-E-A-T", "内容策略", "质量优化"]
+  },
+  {
+    "id": "sem-brand-defense-ai-ad-integration-2026-05-25",
+    "title": "SEM 新重点：品牌防御与 AI 广告位协同",
+    "category": "SEM",
+    "type": "practice",
+    "publishedAt": "2026-05-25T08:15:00+08:00",
+    "sourceName": "Google Shopping / 行业实操观察",
+    "summary": "AI 购物与 AI 搜索广告位扩展后，品牌词防守和商品信息完整度对转化稳定性影响更大。",
+    "mainContent": "建议把品牌词投放作为防御底座，同时同步优化商品结构化数据、价格库存与评价信息；在 AI 搜索环境下，优先测试高意图词与品牌词组合，减少被竞品截流的风险。",
+    "tags": ["SEM", "品牌词", "Google Ads", "购物广告"]
+  },
+  {
+    "id": "schema-trust-signal-optimization-playbook-2026-05-25",
+    "title": "Schema 与信任信号优化：从“能展示”转向“能理解”",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-25T07:55:00+08:00",
+    "sourceName": "行业案例与社区经验",
+    "summary": "结构化数据的价值正在从富结果点击扩展到 AI 理解与引用，页面可信度体系需要同步升级。",
+    "mainContent": "优先完善作者信息、来源引用、案例证据与主题实体关联，再配合 FAQ、HowTo、Review 等 schema，帮助搜索引擎和 AI 系统更准确识别页面角色与可信度。",
+    "tags": ["Schema", "信任信号", "实体SEO", "AI引用"]
+  },
+  {
+    "id": "geo-daily-action-checklist-2026-05-25",
+    "title": "24 小时落地清单：核心更新期的 SEO/SEM 联动动作",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-25T07:30:00+08:00",
+    "sourceName": "老船长实操整理",
+    "summary": "围绕核心更新与 AI 搜索变化，先做监控、再做内容审计、同步推进广告实验，可更快定位增长点。",
+    "mainContent": "今日优先执行 6 件事：检查核心更新影响；审计页面 E-E-A-T 与 AI 可引用性；补齐 schema；强化外链与作者信号；在 ChatGPT/Perplexity 验证品牌引用；配套品牌词与 AI 广告位实验。",
+    "tags": ["行动清单", "SEO实操", "SEM联动", "GEO"]
+  },
+  {
     "id": "google-may-2026-core-update-rollout-2026-05-24",
     "title": "Google May 2026 核心更新正在 rollout",
     "category": "SEO",
