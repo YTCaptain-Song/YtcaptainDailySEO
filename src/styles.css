@@ -535,7 +535,7 @@ h1 {
 }
 
 .digest-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 22px;
 }
 
@@ -821,6 +821,12 @@ h1 {
   box-shadow: 0 16px 38px rgba(16, 36, 58, 0.12);
 }
 
+.loading-note {
+  margin: 12px 0 0;
+  color: #607385;
+  font-size: 0.84rem;
+}
+
 .site-footer p {
   margin: 0;
   line-height: 1.65;
@@ -849,7 +855,7 @@ h1 {
   }
 
   .digest-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .action-grid {

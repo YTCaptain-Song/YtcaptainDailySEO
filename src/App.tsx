@@ -1,10 +1,9 @@
-import { useMemo, useState } from "react";
-import rawLogs from "./data/logs.json";
+import { useEffect, useMemo, useState } from "react";
 import type { LogEntry, LogType } from "./types";
 
-const logs = rawLogs as LogEntry[];
 const timeZone = "Asia/Shanghai";
 const dayMs = 24 * 60 * 60 * 1000;
+const logIndexUrl = "/data/logs/index.json";
 
 const typeLabels: Record<LogType, string> = {
   practice: "技术实操",
@@ -72,6 +71,20 @@ function dateKey(value: string | Date) {
 
 function monthKey(value: Date) {
   return dateKey(value).slice(0, 7);
+}
+
+function monthFromDateKey(value: string) {
+  return value.slice(0, 7);
+}
+
+function previousMonthKey(value: string) {
+  const [year, month] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 2, 1, 12));
+  return monthKey(date);
+}
+
+function isValidDateKey(value: string | null) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
 function compareLogs(a: LogEntry, b: LogEntry) {
@@ -505,33 +518,154 @@ function SiteFooter() {
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [view, setView] = useState<"latest" | "archive">("latest");
   const now = useMemo(() => new Date(), []);
   const latestCutoff = now.getTime() - dayMs;
-  const latestUpdated = logs.reduce((latest, item) => {
+  const currentMonth = useMemo(() => monthKey(now), [now]);
+  const prevMonth = useMemo(() => previousMonthKey(currentMonth), [currentMonth]);
+  const defaultSelectedDate = dateKey(now);
+  const initialDateFromUrl = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    const value = new URLSearchParams(window.location.search).get("date");
+    return isValidDateKey(value) ? value : null;
+  }, []);
+  const [availableMonths, setAvailableMonths] = useState<string[]>([]);
+  const [monthLogs, setMonthLogs] = useState<Record<string, LogEntry[]>>({});
+  const [view, setView] = useState<"latest" | "archive">(initialDateFromUrl ? "archive" : "latest");
+  const [selectedDate, setSelectedDate] = useState(initialDateFromUrl ?? defaultSelectedDate);
+  const [isLoadingLogs, setIsLoadingLogs] = useState(false);
+
+  const monthsNeeded = useMemo(() => {
+    const archiveMonth = monthFromDateKey(selectedDate);
+    const base = view === "latest" ? [currentMonth, prevMonth] : [archiveMonth, currentMonth, prevMonth];
+    const months = Array.from(new Set(base));
+    if (availableMonths.length === 0) return months;
+    return months.filter((month) => availableMonths.includes(month));
+  }, [availableMonths, currentMonth, prevMonth, selectedDate, view]);
+
+  const scopedLogs = useMemo(
+    () =>
+      monthsNeeded
+        .flatMap((month) => monthLogs[month] ?? [])
+        .sort(compareLogs),
+    [monthLogs, monthsNeeded],
+  );
+
+  const latestUpdated = scopedLogs.reduce((latest, item) => {
     const itemTime = new Date(item.publishedAt).getTime();
     return itemTime > latest ? itemTime : latest;
   }, 0);
-  const defaultSelectedDate = dateKey(new Date(latestUpdated || now.getTime()));
-  const [selectedDate, setSelectedDate] = useState(defaultSelectedDate);
 
   const latestLogs = useMemo(
     () =>
       filterLogs(
-        logs.filter((item) => new Date(item.publishedAt).getTime() >= latestCutoff),
+        scopedLogs.filter((item) => new Date(item.publishedAt).getTime() >= latestCutoff),
         query,
       ),
-    [latestCutoff, query],
+    [latestCutoff, query, scopedLogs],
   );
 
   const archiveLogs = useMemo(
-    () => filterLogs(logs, query),
-    [query],
+    () => filterLogs(scopedLogs, query),
+    [query, scopedLogs],
   );
   const suggestedTags = useMemo(
     () => getVisibleTags(view === "latest" ? latestLogs : archiveLogs),
     [archiveLogs, latestLogs, view],
   );
+  const archiveActiveDate = useMemo(() => {
+    const [year, month, day] = selectedDate.split("-").map(Number);
+    return new Date(Date.UTC(year, month - 1, day, 12));
+  }, [selectedDate]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadIndex = async () => {
+      try {
+        const res = await fetch(logIndexUrl);
+        if (!res.ok) throw new Error(`failed to load log index (${res.status})`);
+        const payload = (await res.json()) as { months?: string[] };
+        const months = (payload.months ?? []).filter((month) => /^\d{4}-\d{2}$/.test(month));
+        if (!cancelled) setAvailableMonths(months);
+      } catch {
+        if (!cancelled) setAvailableMonths([currentMonth]);
+      }
+    };
+    loadIndex();
+    return () => {
+      cancelled = true;
+    };
+  }, [currentMonth]);
+
+  useEffect(() => {
+    const missingMonths = monthsNeeded.filter((month) => monthLogs[month] === undefined);
+    if (missingMonths.length === 0) return;
+    let cancelled = false;
+    setIsLoadingLogs(true);
+
+    Promise.all(
+      missingMonths.map(async (month) => {
+        const res = await fetch(`/data/logs/${month}.json`);
+        if (!res.ok) throw new Error(`failed to load month ${month} (${res.status})`);
+        const data = (await res.json()) as LogEntry[];
+        return [month, data] as const;
+      }),
+    )
+      .then((entries) => {
+        if (cancelled) return;
+        setMonthLogs((prev) => {
+          const next = { ...prev };
+          entries.forEach(([month, logs]) => {
+            next[month] = logs;
+          });
+          return next;
+        });
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setMonthLogs((prev) => {
+            const next = { ...prev };
+            missingMonths.forEach((month) => {
+              next[month] = [];
+            });
+            return next;
+          });
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingLogs(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [monthLogs, monthsNeeded]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    if (view === "archive") {
+      params.set("date", selectedDate);
+    } else {
+      params.delete("date");
+    }
+    const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}${window.location.hash}`;
+    window.history.replaceState({}, "", next);
+  }, [selectedDate, view]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handlePopState = () => {
+      const value = new URLSearchParams(window.location.search).get("date");
+      if (value && isValidDateKey(value)) {
+        setSelectedDate(value);
+        setView("archive");
+      } else {
+        setView("latest");
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   return (
     <main>
@@ -579,13 +713,14 @@ export default function App() {
           <DailyDigest items={latestLogs} latestUpdated={latestUpdated} />
         ) : (
           <Archive
-            activeDate={now}
+            activeDate={archiveActiveDate}
             items={archiveLogs}
             onSelectDate={setSelectedDate}
             selectedDate={selectedDate}
           />
         )}
       </div>
+      {isLoadingLogs && <p className="loading-note">正在加载更多归档内容…</p>}
       <SiteFooter />
     </main>
   );
