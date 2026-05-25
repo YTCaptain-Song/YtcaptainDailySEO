@@ -554,14 +554,16 @@ export default function App() {
     const itemTime = new Date(item.publishedAt).getTime();
     return itemTime > latest ? itemTime : latest;
   }, 0);
+  const effectiveLatestCutoff =
+    latestUpdated > 0 && latestUpdated < latestCutoff ? latestUpdated - dayMs : latestCutoff;
 
   const latestLogs = useMemo(
     () =>
       filterLogs(
-        scopedLogs.filter((item) => new Date(item.publishedAt).getTime() >= latestCutoff),
+        scopedLogs.filter((item) => new Date(item.publishedAt).getTime() >= effectiveLatestCutoff),
         query,
       ),
-    [latestCutoff, query, scopedLogs],
+    [effectiveLatestCutoff, query, scopedLogs],
   );
 
   const archiveLogs = useMemo(
