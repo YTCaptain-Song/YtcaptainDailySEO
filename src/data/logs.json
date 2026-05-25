@@ -39,6 +39,7 @@
     "type": "news",
     "publishedAt": "2026-05-25T09:20:00+08:00",
     "sourceName": "Search Engine Land / Seroundtable",
+    "sourceUrl": "https://searchengineland.com/google-may-2026-core-update-rolling-out-now-478430",
     "summary": "Google 5 月核心更新仍在推进阶段，预计约两周完成，内容相关性与有用性信号权重继续提升。",
     "mainContent": "建议先按页面类型在 GSC 分组观察波动，不要因短期起伏立刻大改。优先检查页面是否真实解决用户问题，并补强本地场景所需的 LocalBusiness、FAQ、Review 等结构化信息。",
     "tags": ["Google核心更新", "GSC", "内容质量", "本地SEO"]
@@ -105,6 +106,7 @@
     "type": "news",
     "publishedAt": "2026-05-24T13:05:00+08:00",
     "sourceName": "Search Engine Land / Search Engine Journal",
+    "sourceUrl": "https://searchengineland.com/google-may-2026-core-update-rolling-out-now-478430",
     "summary": "Google 本月第二轮核心算法更新已启动，预计 1-2 周完成，重点影响内容质量、用户体验和权威性。",
     "mainContent": "建议不要因为短期波动立刻大范围改站。先在 Search Console 中标记受影响页面，观察查询、页面类型和流量来源变化，再优先强化 E-E-A-T、用户意图匹配和页面体验。",
     "tags": ["Google核心更新", "E-E-A-T", "Search Console", "内容质量"]
@@ -116,6 +118,7 @@
     "type": "practice",
     "publishedAt": "2026-05-24T12:40:00+08:00",
     "sourceName": "Google Search Central",
+    "sourceUrl": "https://developers.google.com/search/news",
     "summary": "Google 近期生成式 AI 优化资源强调，权威内容、相关性和用户需求满足仍是 AI 搜索可见度的核心。",
     "mainContent": "不要把 llms.txt、复杂切块或投机技巧当作主要策略。更值得做的是让页面直接回答真实用户问题，补充经验、证据、来源和结构化信息，让 AI Overviews 更容易识别你是可信来源。",
     "tags": ["AEO", "GEO", "AI Overviews", "Google官方"]
