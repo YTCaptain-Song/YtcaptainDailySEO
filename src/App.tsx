@@ -536,10 +536,18 @@ export default function App() {
 
   const monthsNeeded = useMemo(() => {
     const archiveMonth = monthFromDateKey(selectedDate);
-    const base = view === "latest" ? [currentMonth, prevMonth] : [archiveMonth, currentMonth, prevMonth];
+    const latestBase = [currentMonth, prevMonth];
+    const archiveBase = [archiveMonth, currentMonth, prevMonth];
+    const base = view === "latest" ? latestBase : archiveBase;
     const months = Array.from(new Set(base));
+
     if (availableMonths.length === 0) return months;
-    return months.filter((month) => availableMonths.includes(month));
+
+    const matched = months.filter((month) => availableMonths.includes(month));
+    if (matched.length > 0) return matched;
+
+    // 当前月份区间无内容时，回退到最近有数据的月份，避免首页空白。
+    return availableMonths.slice(0, view === "latest" ? 2 : 3);
   }, [availableMonths, currentMonth, prevMonth, selectedDate, view]);
 
   const scopedLogs = useMemo(
@@ -589,14 +597,14 @@ export default function App() {
         const months = (payload.months ?? []).filter((month) => /^\d{4}-\d{2}$/.test(month));
         if (!cancelled) setAvailableMonths(months);
       } catch {
-        if (!cancelled) setAvailableMonths([currentMonth]);
+        if (!cancelled) setAvailableMonths([currentMonth, prevMonth]);
       }
     };
     loadIndex();
     return () => {
       cancelled = true;
     };
-  }, [currentMonth]);
+  }, [currentMonth, prevMonth]);
 
   useEffect(() => {
     const missingMonths = monthsNeeded.filter((month) => monthLogs[month] === undefined);
