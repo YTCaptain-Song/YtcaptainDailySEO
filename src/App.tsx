@@ -228,6 +228,11 @@ function groupByDate(items: LogEntry[]) {
   }, {});
 }
 
+function getLatestDateKey(items: LogEntry[]) {
+  if (items.length === 0) return null;
+  return dateKey(items[0].publishedAt);
+}
+
 function getMonthDays(activeDate: Date, items: LogEntry[]) {
   const activeMonth = monthKey(activeDate);
   const [year, month] = activeMonth.split("-").map(Number);
@@ -661,6 +666,15 @@ export default function App() {
     const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}${window.location.hash}`;
     window.history.replaceState({}, "", next);
   }, [selectedDate, view]);
+
+  useEffect(() => {
+    if (view !== "archive") return;
+    if (archiveLogs.length === 0) return;
+    const hasSelected = archiveLogs.some((item) => dateKey(item.publishedAt) === selectedDate);
+    if (hasSelected) return;
+    const fallbackDate = getLatestDateKey(archiveLogs);
+    if (fallbackDate) setSelectedDate(fallbackDate);
+  }, [archiveLogs, selectedDate, view]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
