@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import rawLogs from "./data/logs.json";
-import type { CategoryFilter, LogEntry, LogType, TypeFilter } from "./types";
+import type { LogEntry, LogType } from "./types";
 
 const logs = rawLogs as LogEntry[];
 const timeZone = "Asia/Shanghai";
@@ -127,6 +127,22 @@ function getTopTags(items: LogEntry[]) {
     .map(([tag]) => tag);
 }
 
+function getVisibleTags(items: LogEntry[]) {
+  const seen = new Set<string>();
+  const ordered: string[] = [];
+
+  items.forEach((item) => {
+    item.tags.forEach((tag) => {
+      if (!seen.has(tag)) {
+        seen.add(tag);
+        ordered.push(tag);
+      }
+    });
+  });
+
+  return ordered;
+}
+
 function getOverview(items: LogEntry[]) {
   const aiCount = countByKeyword(items, "AI");
   const googleCount = countByKeyword(items, "Google");
@@ -167,15 +183,11 @@ function splitAdvice(value: string) {
 
 function filterLogs(
   items: LogEntry[],
-  category: CategoryFilter,
-  type: TypeFilter,
   query: string,
 ) {
   const normalizedQuery = query.trim().toLowerCase();
 
   return items
-    .filter((item) => category === "all" || item.category === category)
-    .filter((item) => type === "all" || item.type === type)
     .filter((item) => {
       if (!normalizedQuery) return true;
       const haystack = [
@@ -223,26 +235,18 @@ function getMonthDays(activeDate: Date, items: LogEntry[]) {
 }
 
 function FilterPanel({
-  category,
-  type,
   query,
   resultCount,
-  onCategory,
-  onType,
+  suggestedTags,
   onQuery,
 }: {
-  category: CategoryFilter;
-  type: TypeFilter;
   query: string;
   resultCount: number;
-  onCategory: (value: CategoryFilter) => void;
-  onType: (value: TypeFilter) => void;
+  suggestedTags: string[];
   onQuery: (value: string) => void;
 }) {
-  const hasActiveFilters = category !== "all" || type !== "all" || query.trim().length > 0;
+  const hasActiveFilters = query.trim().length > 0;
   const clearFilters = () => {
-    onCategory("all");
-    onType("all");
     onQuery("");
   };
 
@@ -259,46 +263,6 @@ function FilterPanel({
       </div>
 
       <div className="filter-controls">
-        <div className="filter-block">
-          <span className="filter-label">频道</span>
-          <div className="segmented">
-            {[
-              ["all", "全部"],
-              ["SEO", "SEO"],
-              ["SEM", "SEM"],
-            ].map(([value, label]) => (
-              <button
-                className={category === value ? "active" : ""}
-                key={value}
-                onClick={() => onCategory(value as CategoryFilter)}
-                type="button"
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="filter-block">
-          <span className="filter-label">类型</span>
-          <div className="segmented">
-            {[
-              ["all", "全部内容"],
-              ["practice", "技术实操"],
-              ["news", "最新资讯"],
-            ].map(([value, label]) => (
-              <button
-                className={type === value ? "active" : ""}
-                key={value}
-                onClick={() => onType(value as TypeFilter)}
-                type="button"
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <label className="search-box">
           <span className="filter-label">关键词</span>
           <input
@@ -308,6 +272,19 @@ function FilterPanel({
             value={query}
           />
         </label>
+
+        {suggestedTags.length > 0 && (
+          <div className="filter-block">
+            <span className="filter-label">热门标签</span>
+            <div className="quick-tags" aria-label="热门标签">
+              {suggestedTags.map((tag) => (
+                <button key={tag} onClick={() => onQuery(tag)} type="button">
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </aside>
   );
@@ -527,8 +504,6 @@ function SiteFooter() {
 }
 
 export default function App() {
-  const [category, setCategory] = useState<CategoryFilter>("all");
-  const [type, setType] = useState<TypeFilter>("all");
   const [query, setQuery] = useState("");
   const [view, setView] = useState<"latest" | "archive">("latest");
   const now = useMemo(() => new Date(), []);
@@ -544,16 +519,18 @@ export default function App() {
     () =>
       filterLogs(
         logs.filter((item) => new Date(item.publishedAt).getTime() >= latestCutoff),
-        category,
-        type,
         query,
       ),
-    [category, latestCutoff, query, type],
+    [latestCutoff, query],
   );
 
   const archiveLogs = useMemo(
-    () => filterLogs(logs, category, type, query),
-    [category, query, type],
+    () => filterLogs(logs, query),
+    [query],
+  );
+  const suggestedTags = useMemo(
+    () => getVisibleTags(view === "latest" ? latestLogs : archiveLogs),
+    [archiveLogs, latestLogs, view],
   );
 
   return (
@@ -592,13 +569,10 @@ export default function App() {
 
       <div className={view === "latest" ? "workspace latest-workspace" : "workspace"}>
         <FilterPanel
-          category={category}
-          onCategory={setCategory}
           onQuery={setQuery}
-          onType={setType}
           query={query}
           resultCount={view === "latest" ? latestLogs.length : archiveLogs.length}
-          type={type}
+          suggestedTags={suggestedTags}
         />
 
         {view === "latest" ? (
