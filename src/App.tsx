@@ -3,7 +3,7 @@ import type { LogEntry, LogType } from "./types";
 
 const timeZone = "Asia/Shanghai";
 const dayMs = 24 * 60 * 60 * 1000;
-const logIndexUrl = "/data/logs/index.json";
+const logIndexUrl = `${import.meta.env.BASE_URL}data/logs/index.json`;
 
 const typeLabels: Record<LogType, string> = {
   practice: "技术实操",
@@ -606,7 +606,7 @@ export default function App() {
 
     Promise.all(
       missingMonths.map(async (month) => {
-        const res = await fetch(`/data/logs/${month}.json`);
+        const res = await fetch(`${import.meta.env.BASE_URL}data/logs/${month}.json`);
         if (!res.ok) throw new Error(`failed to load month ${month} (${res.status})`);
         const data = (await res.json()) as LogEntry[];
         return [month, data] as const;
