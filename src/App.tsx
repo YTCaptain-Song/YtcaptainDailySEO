@@ -510,6 +510,22 @@ function Archive({
   );
 }
 
+function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <p>SEO与SEM最新技术实操资讯简报</p>
+      <p>本简报精选自主流搜索营销站点、Google官方更新及行业讨论</p>
+      <p>
+        由{" "}
+        <a href="https://www.ytcaptain.com/" rel="noreferrer" target="_blank">
+          外贸老船长
+        </a>{" "}
+        技术驱动
+      </p>
+    </footer>
+  );
+}
+
 export default function App() {
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [type, setType] = useState<TypeFilter>("all");
@@ -596,6 +612,7 @@ export default function App() {
           />
         )}
       </div>
+      <SiteFooter />
     </main>
   );
 }
