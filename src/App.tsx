@@ -5,6 +5,19 @@ const timeZone = "Asia/Shanghai";
 const dayMs = 24 * 60 * 60 * 1000;
 const logIndexUrl = `${import.meta.env.BASE_URL}data/logs/index.json`;
 
+async function fetchMonthLogs(month: string): Promise<LogEntry[] | null> {
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}data/logs/${month}.json`);
+    if (!res.ok) return null;
+    const contentType = res.headers.get("content-type") ?? "";
+    if (!contentType.includes("json")) return null;
+    const data = (await res.json()) as unknown;
+    return Array.isArray(data) ? (data as LogEntry[]) : null;
+  } catch {
+    return null;
+  }
+}
+
 const typeLabels: Record<LogType, string> = {
   practice: "技术实操",
   news: "最新资讯",
@@ -534,7 +547,7 @@ export default function App() {
     return isValidDateKey(value) ? value : null;
   }, []);
   const [availableMonths, setAvailableMonths] = useState<string[]>([]);
-  const [monthLogs, setMonthLogs] = useState<Record<string, LogEntry[]>>({});
+  const [monthLogs, setMonthLogs] = useState<Record<string, LogEntry[] | null>>({});
   const [view, setView] = useState<"latest" | "archive">(initialDateFromUrl ? "archive" : "latest");
   const [selectedDate, setSelectedDate] = useState(initialDateFromUrl ?? defaultSelectedDate);
   const [isLoadingLogs, setIsLoadingLogs] = useState(false);
@@ -546,7 +559,8 @@ export default function App() {
     const base = view === "latest" ? latestBase : archiveBase;
     const months = Array.from(new Set(base));
 
-    if (availableMonths.length === 0) return months;
+    // 索引未就绪时只拉当前月，避免误请求不存在的上月 JSON（本地 dev 会回退 HTML）。
+    if (availableMonths.length === 0) return [currentMonth];
 
     const matched = months.filter((month) => availableMonths.includes(month));
     if (matched.length > 0) return matched;
@@ -602,7 +616,7 @@ export default function App() {
         const months = (payload.months ?? []).filter((month) => /^\d{4}-\d{2}$/.test(month));
         if (!cancelled) setAvailableMonths(months);
       } catch {
-        if (!cancelled) setAvailableMonths([currentMonth, prevMonth]);
+        if (!cancelled) setAvailableMonths([currentMonth]);
       }
     };
     loadIndex();
@@ -612,39 +626,42 @@ export default function App() {
   }, [currentMonth, prevMonth]);
 
   useEffect(() => {
+    if (availableMonths.length === 0) return;
+    setMonthLogs((prev) => {
+      let changed = false;
+      const next = { ...prev };
+      for (const month of availableMonths) {
+        if (next[month] === null) {
+          delete next[month];
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+  }, [availableMonths]);
+
+  useEffect(() => {
     const missingMonths = monthsNeeded.filter((month) => monthLogs[month] === undefined);
     if (missingMonths.length === 0) return;
     let cancelled = false;
     setIsLoadingLogs(true);
 
-    Promise.all(
-      missingMonths.map(async (month) => {
-        const res = await fetch(`${import.meta.env.BASE_URL}data/logs/${month}.json`);
-        if (!res.ok) throw new Error(`failed to load month ${month} (${res.status})`);
-        const data = (await res.json()) as LogEntry[];
-        return [month, data] as const;
-      }),
-    )
-      .then((entries) => {
+    Promise.allSettled(missingMonths.map((month) => fetchMonthLogs(month)))
+      .then((results) => {
         if (cancelled) return;
         setMonthLogs((prev) => {
           const next = { ...prev };
-          entries.forEach(([month, logs]) => {
-            next[month] = logs;
+          results.forEach((result, index) => {
+            const month = missingMonths[index];
+            if (result.status === "fulfilled" && result.value) {
+              next[month] = result.value;
+              return;
+            }
+            // 失败记为 null（非空数组），避免阻塞其它月份且不与“未加载”混淆。
+            next[month] = null;
           });
           return next;
         });
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setMonthLogs((prev) => {
-            const next = { ...prev };
-            missingMonths.forEach((month) => {
-              next[month] = [];
-            });
-            return next;
-          });
-        }
       })
       .finally(() => {
         if (!cancelled) setIsLoadingLogs(false);
