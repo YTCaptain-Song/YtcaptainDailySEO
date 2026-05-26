@@ -1,5 +1,61 @@
 [
   {
+    "id": "b2b-seo-geo-exposure-pipeline-shift-2026-05-26",
+    "title": "B2B 独立站进入“曝光优先”阶段：从点击导向转向 AI 引用与管道贡献",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-26T09:40:00+08:00",
+    "sourceName": "B2B SEO/GEO 行业简报整合（2026-05-26）",
+    "summary": "多份简报共同指向同一变化：B2B SEO 评估重心正从单纯会话量转向 AI 可见度与商机贡献。",
+    "mainContent": "在 Google 核心更新与 AI 搜索并行阶段，零点击场景增多，品牌是否被 AI 答案层引用成为新增竞争位。独立站应把“排名+点击”升级为“曝光+引用+管道”三层监测：跟踪核心主题在 ChatGPT、Perplexity、Gemini 与 AI Overview 的露出情况，同时在站内强化实体一致性、结构化数据与可验证证据，减少只看流量导致的误判。",
+    "tags": ["B2B独立站", "GEO", "AI可见度", "管道归因"]
+  },
+  {
+    "id": "b2b-page-seo-geo-conversion-playbook-2026-05-26",
+    "title": "B2B 页面实操合并版：长尾集群 + E-E-A-T + AI 可读结构 + 转化路径",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-26T09:15:00+08:00",
+    "sourceName": "B2B SEO/GEO 策略文档去重整理",
+    "summary": "将重复度最高的页面优化建议合并为一套执行框架，覆盖获客与转化两个环节。",
+    "mainContent": "内容侧以“高意图长尾词+Topic Cluster”组织页面，优先服务具体决策问题；信任侧补齐作者/案例/数据来源/客户证明等 E-E-A-T 信号；技术侧保持速度、移动体验、内链与 Schema 的稳定基线，并用清晰分层、问答段与对比信息提升 AI 抽取效率；转化侧采用单一核心 CTA、精简表单与分阶段路径（资料下载→Demo→询盘），最后用 GSC 与转化数据优先优化已有高潜力页面。",
+    "tags": ["页面优化", "长尾关键词", "E-E-A-T", "转化率优化"]
+  },
+  {
+    "id": "google-core-update-observe-then-adjust-2026-05-26",
+    "title": "Google 核心更新观察窗口：先稳住，再做结构化修正",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-26T08:55:00+08:00",
+    "sourceName": "Google Search Status / Search Engine Land / 社区反馈整合",
+    "sourceUrl": "https://status.search.google.com/incidents/wdAXJk6LRRihEjpzEeWE",
+    "summary": "May 2026 Core Update 仍在 rollout，行业反馈显示纯 AI 批量内容和弱差异化页面更易波动。",
+    "mainContent": "更新期建议暂停大规模改版，优先做分组监控：按页面类型看展示、点击、CTR 与排名变化，再针对受影响页面补强“前段直答+真实经验+证据来源”。对 B2B 站点来说，刷新旧高潜页面通常比短期批量新建更稳。",
+    "tags": ["Google核心更新", "GSC", "内容刷新", "波动监测"]
+  },
+  {
+    "id": "geo-implementation-stack-llms-schema-entity-2026-05-26",
+    "title": "GEO 技术落地三件套：结构化数据、实体一致性、AI 可读文本",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-26T08:35:00+08:00",
+    "sourceName": "B2B GEO 策略简报合并（2026-05-26）",
+    "summary": "同日多份资料重复强调：被 AI 引用不是玄学，关键在机器可解析与可验证。",
+    "mainContent": "执行上可分三步：先补齐 FAQ/Article/Organization 等核心 Schema；再统一品牌、产品、创始人、案例等实体命名与 sameAs 外部映射；最后将关键页面改为“问题-答案-证据”表达，并按需维护 llms.txt，提升 AI 系统抽取与引用稳定性。",
+    "tags": ["GEO", "Schema", "实体SEO", "llms.txt"]
+  },
+  {
+    "id": "sem-bottom-funnel-defense-under-ai-serp-2026-05-26",
+    "title": "AI 搜索下的 SEM 补位：守住品牌词与底部漏斗词",
+    "category": "SEM",
+    "type": "practice",
+    "publishedAt": "2026-05-26T08:10:00+08:00",
+    "sourceName": "SEO/SEM 每日简报整合（2026-05-26）",
+    "summary": "在零点击上升阶段，付费搜索更适合作为高意图流量与转化补位工具。",
+    "mainContent": "投放侧优先做两层防守：第一层品牌词防竞品截流，第二层交易意图词承接“已被教育”的买家。落地页保持单一 CTA、短表单和信任证明，重点看演示申请率、有效询盘率和管道贡献，而非只看 CPC 或点击量。",
+    "tags": ["SEM", "品牌词防御", "高意图词", "线索转化"]
+  },
+  {
     "id": "ai-crawler-control-llms-txt-sameas-2026-05-25",
     "title": "AI 时代技术 SEO 新增三件事：爬虫控制、llms.txt、sameAs",
     "category": "SEO",
