@@ -1,5 +1,61 @@
 [
   {
+    "id": "google-core-update-ai-serp-watch-2026-05-28",
+    "title": "Google 核心更新叠加 AI 搜索：排名第一也要看是否被引用",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-28T09:40:00+08:00",
+    "sourceName": "Google Search Status / Search Engine Land / Julian Goldie SEO",
+    "sourceUrl": "https://status.search.google.com/incidents/wdAXJk6LRRihEjpzEeWE",
+    "summary": "May 2026 Core Update 仍在推进，AI Overviews 与 AI Mode 让传统排名和真实点击继续分离。",
+    "mainContent": "当前不要因短期波动大规模改站，先用 GSC 与 Analytics 按页面类型观察展示、点击、CTR 和停留变化。对受影响页面优先补强原创经验、E-E-A-T、清晰结构和直接答案，同时记录核心词下 AI Overview 是否出现、是否引用本站，以及排名高但点击下降的页面。",
+    "tags": ["Google核心更新", "AI Overviews", "GSC", "E-E-A-T"]
+  },
+  {
+    "id": "b2b-geo-visibility-over-traffic-2026-05-28",
+    "title": "B2B 独立站 SEO 指标换挡：从流量转向 AI 可见度",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-05-28T09:20:00+08:00",
+    "sourceName": "近期 B2B SEO 报告 / Google 更新总结",
+    "summary": "零点击搜索加速后，B2B 独立站不能只看自然会话量，更要看品牌是否进入 AI 答案层。",
+    "mainContent": "日常复盘建议增加三类指标：Google、Perplexity、ChatGPT、Gemini 中的品牌露出；被引用页面与引用语境；SEO/GEO 线索进入 CRM 后的有效询盘和管道贡献。内容建设上要减少泛化文章，围绕具体采购问题、产品类别、实施步骤和差异化证据建立可引用页面。",
+    "tags": ["B2B独立站", "GEO", "AI可见度", "零点击搜索"]
+  },
+  {
+    "id": "b2b-topic-cluster-landing-page-cro-2026-05-28",
+    "title": "B2B 页面增长组合：主题集群、长尾意图与低阻力转化",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-28T09:00:00+08:00",
+    "sourceName": "HubSpot / Slack / Zendesk / Stripe 页面实践与 B2B SEO 最佳实践",
+    "summary": "高转化 B2B 页面应同时服务搜索理解、AI 引用和买家决策。",
+    "mainContent": "先围绕 1-2 个核心 Pillar Page 建 10-20 个 Cluster Pages，覆盖用例、对比、案例和高意图长尾词；页面表达采用“问题-答案-证据-案例”结构，并加入统计数据、专家引用、FAQ 与 Organization Schema。落地页首屏保留单一主要 CTA，表单控制在 3-5 个字段，配合客户 Logo、案例、评分或视频证言降低决策阻力。",
+    "tags": ["Topic Cluster", "长尾关键词", "落地页优化", "转化率优化"]
+  },
+  {
+    "id": "technical-seo-ai-readability-checklist-2026-05-28",
+    "title": "技术 SEO 回到基础设施：速度、抓取、Schema 与 AI 可读性",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-05-28T08:40:00+08:00",
+    "sourceName": "X 平台行业分享 / Search Engine Land / SERoundtable / Google Search Central",
+    "summary": "AI 搜索环境下，技术 SEO 不只是修页面错误，而是保证内容能被发现、读取、理解和引用。",
+    "mainContent": "优先检查四条线：服务器日志与 GSC 抓取状态，确认重要页面被正常发现；Core Web Vitals、TTFB 和移动体验，避免首屏过重；FAQ、Organization、Article 等 Schema 是否覆盖关键页面；分面导航、内链、站点地图和 URL 是否让搜索引擎清楚识别页面层级。新站或外贸站收录慢时，先排查抓取、内容厚度和内链，再考虑外链投入。",
+    "tags": ["Technical SEO", "Core Web Vitals", "Schema", "抓取优化"]
+  },
+  {
+    "id": "sem-paid-search-role-under-ai-serp-2026-05-28",
+    "title": "AI SERP 下的 SEM 角色：少买泛流量，多守高意图入口",
+    "category": "SEM",
+    "type": "practice",
+    "publishedAt": "2026-05-28T08:20:00+08:00",
+    "sourceName": "X 平台行业分享 / Search Engine Land / SERoundtable",
+    "summary": "当 AI 答案层分流自然点击时，SEM 更适合作为品牌防御和底部漏斗补位。",
+    "mainContent": "预算应优先覆盖品牌词、竞品截流词和明确交易意图词，避免用付费流量弥补低质量内容。落地页继续保持快加载、单一 CTA、短表单和信任证明，并把评估重点放在有效询盘率、Demo 申请率和管道贡献，而不是只看点击量或 CPC。",
+    "tags": ["SEM", "品牌词防御", "高意图词", "AI搜索"]
+  },
+  {
     "id": "b2b-seo-geo-exposure-pipeline-shift-2026-05-26",
     "title": "B2B 独立站进入“曝光优先”阶段：从点击导向转向 AI 引用与管道贡献",
     "category": "SEO",
