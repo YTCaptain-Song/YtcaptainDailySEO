@@ -23,23 +23,50 @@ const typeLabels: Record<LogType, string> = {
   news: "最新资讯",
 };
 
-const actionSections = [
-  {
-    title: "核心关注",
-    items: ["AI 搜索可见度", "Google 核心更新", "内容质量与用户意图"],
-  },
-  {
-    title: "实操重点",
-    items: ["强化 E-E-A-T", "补充结构化数据", "监测 AI Overviews 引用"],
-  },
-  {
-    title: "策略组合",
-    items: ["SEO 与 SEM 协同", "品牌实体枢纽", "高价值页面优先"],
-  },
-  {
-    title: "日常执行",
-    items: ["检查 Search Console", "记录排名和点击波动", "持续更新重点页面"],
-  },
+const actionGroups = ["focus", "practice", "strategy", "routine"] as const;
+
+type ActionGroup = (typeof actionGroups)[number];
+
+type ActionRule = {
+  group: ActionGroup;
+  label: string;
+  keywords: string[];
+};
+
+const actionTitles: Record<ActionGroup, string> = {
+  focus: "核心关注",
+  practice: "实操重点",
+  strategy: "策略组合",
+  routine: "日常执行",
+};
+
+const actionRules: ActionRule[] = [
+  { group: "focus", label: "AI 搜索可见度与引用", keywords: ["AI Overviews", "AI Mode", "AI可见度", "AI 搜索", "ChatGPT", "Perplexity", "Gemini"] },
+  { group: "focus", label: "Google 核心更新波动", keywords: ["Google核心更新", "核心更新", "Core Update", "rollout"] },
+  { group: "focus", label: "B2B 独立站 GEO 转型", keywords: ["B2B独立站", "GEO", "生成式引擎"] },
+  { group: "focus", label: "内容质量与可信信号", keywords: ["E-E-A-T", "内容质量", "people-first", "用户意图"] },
+  { group: "focus", label: "高意图长尾与 BOFU 页面", keywords: ["BOFU", "长尾", "定价", "案例", "对比"] },
+  { group: "focus", label: "多语言和区域页面表现", keywords: ["多语言", "hreflang", "本地化", "Geotargeting"] },
+  { group: "focus", label: "改版架构对收录的影响", keywords: ["Headless", "Shopify", "BigCommerce", "改版", "域名"] },
+  { group: "focus", label: "付费搜索高意图入口", keywords: ["SEM", "Google Ads", "品牌词", "高意图词"] },
+  { group: "practice", label: "补齐 Schema 与结构化数据", keywords: ["Schema", "结构化数据", "FAQ", "HowTo", "Article"] },
+  { group: "practice", label: "补强作者、案例和数据背书", keywords: ["E-E-A-T", "作者", "案例", "数据", "背书", "信任"] },
+  { group: "practice", label: "优化 Topic Cluster 与支柱页", keywords: ["Topic Cluster", "Content Hubs", "支柱", "集群", "Pillar"] },
+  { group: "practice", label: "精简表单和 CTA 转化路径", keywords: ["CTA", "表单", "预约", "转化", "ROI", "CRO"] },
+  { group: "practice", label: "检查 hreflang 与区域落地页", keywords: ["hreflang", "国家", "语言", "本地关键词", "区域"] },
+  { group: "practice", label: "做速度、移动体验和 URL 检查", keywords: ["Core Web Vitals", "加载", "移动友好", "URL", "性能"] },
+  { group: "practice", label: "给产品页补规格和解决方案证据", keywords: ["产品规格", "解决方案", "白皮书", "选购指南"] },
+  { group: "strategy", label: "用独立站沉淀品牌实体", keywords: ["独立站", "品牌实体", "实体", "私域询盘"] },
+  { group: "strategy", label: "优先更新高价值 BOFU 页面", keywords: ["BOFU", "定价", "案例", "高价值", "询盘"] },
+  { group: "strategy", label: "把 GEO 指标接入询盘归因", keywords: ["GEO", "AI可见度", "引用", "归因", "管道"] },
+  { group: "strategy", label: "改版前规划 URL、重定向和性能", keywords: ["Headless", "改版", "域名", "重定向", "性能"] },
+  { group: "strategy", label: "品牌词和交易意图词协同", keywords: ["SEM", "品牌词", "交易意图", "高意图词"] },
+  { group: "routine", label: "对比 Search Console 展示、点击与 CTR", keywords: ["GSC", "Search Console", "展示", "点击", "CTR"] },
+  { group: "routine", label: "记录 AI 平台品牌露出和引用页", keywords: ["ChatGPT", "Perplexity", "Gemini", "AI Overview", "引用"] },
+  { group: "routine", label: "等更新稳定后复盘受影响页面", keywords: ["核心更新", "稳定", "波动", "受影响"] },
+  { group: "routine", label: "按页面类型筛选优先级", keywords: ["页面类型", "核心产品页", "落地页", "集群页"] },
+  { group: "routine", label: "检查改版相关重定向和 Schema", keywords: ["重定向", "Schema", "Headless", "域名"] },
+  { group: "routine", label: "持续测试标题、CTA 和页面布局", keywords: ["A/B", "headline", "CTA", "布局", "热图"] },
 ];
 
 function formatDateTime(value: string) {
@@ -88,6 +115,16 @@ function monthKey(value: Date) {
 
 function monthFromDateKey(value: string) {
   return value.slice(0, 7);
+}
+
+function getAvailableYears(months: string[]) {
+  return Array.from(new Set(months.map((month) => month.slice(0, 4)))).sort((a, b) =>
+    b.localeCompare(a, "en"),
+  );
+}
+
+function getMonthsForYear(months: string[], year: string) {
+  return months.filter((month) => month.startsWith(`${year}-`)).sort((a, b) => b.localeCompare(a, "en"));
 }
 
 function previousMonthKey(value: string) {
@@ -197,6 +234,60 @@ function getOverview(items: LogEntry[]) {
             : "等待更多日志形成趋势。",
     },
   ];
+}
+
+function getActionCorpus(items: LogEntry[]) {
+  return items
+    .map((item) => [item.title, item.summary, item.mainContent, item.sourceName, ...item.tags].join(" "))
+    .join(" ")
+    .toLowerCase();
+}
+
+function countKeywordMatches(corpus: string, keywords: string[]) {
+  return keywords.reduce((count, keyword) => {
+    return corpus.includes(keyword.toLowerCase()) ? count + 1 : count;
+  }, 0);
+}
+
+function getFallbackActions(items: LogEntry[], group: ActionGroup) {
+  const templates: Record<ActionGroup, (tag: string) => string> = {
+    focus: (tag) => `关注 ${tag}`,
+    practice: (tag) => `围绕 ${tag} 补充证据`,
+    strategy: (tag) => `优先处理 ${tag} 相关页面`,
+    routine: (tag) => `复盘 ${tag} 数据变化`,
+  };
+
+  return getTopTags(items).map(templates[group]);
+}
+
+function getDailyActionSections(items: LogEntry[]) {
+  const corpus = getActionCorpus(items);
+  const used = new Set<string>();
+
+  return actionGroups.map((group) => {
+    const matchedItems = actionRules
+      .filter((rule) => rule.group === group)
+      .map((rule) => ({
+        label: rule.label,
+        score: countKeywordMatches(corpus, rule.keywords),
+      }))
+      .filter((item) => item.score > 0 && !used.has(item.label))
+      .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label, "zh-CN"))
+      .map((item) => item.label);
+
+    const sectionItems = [...matchedItems, ...getFallbackActions(items, group)]
+      .filter((item) => {
+        if (used.has(item)) return false;
+        used.add(item);
+        return true;
+      })
+      .slice(0, 3);
+
+    return {
+      title: actionTitles[group],
+      items: sectionItems,
+    };
+  });
 }
 
 function splitAdvice(value: string) {
@@ -420,7 +511,9 @@ function CoreOverview({ items }: { items: LogEntry[] }) {
   );
 }
 
-function ActionPanel({ total }: { total: number }) {
+function ActionPanel({ items }: { items: LogEntry[] }) {
+  const sections = getDailyActionSections(items);
+
   return (
     <section className="action-panel" aria-label="行动建议">
       <div>
@@ -428,7 +521,7 @@ function ActionPanel({ total }: { total: number }) {
         <h2>基于过去 24 小时资讯，今天可以先做这些检查</h2>
       </div>
       <div className="action-grid">
-        {actionSections.map((section) => (
+        {sections.map((section) => (
           <article className="action-card" key={section.title}>
             <strong>{section.title}</strong>
             <ul>
@@ -439,7 +532,7 @@ function ActionPanel({ total }: { total: number }) {
           </article>
         ))}
       </div>
-      <p className="action-note">当前视图共 {total} 条内容，筛选后可作为今日 SEO / SEM 工作清单的输入。</p>
+      <p className="action-note">当前视图共 {items.length} 条内容，以上建议已按当前资讯主题自动整理。</p>
     </section>
   );
 }
@@ -465,7 +558,7 @@ function DailyDigest({ items, latestUpdated }: { items: LogEntry[]; latestUpdate
               <LogCard index={index} item={item} key={item.id} />
             ))}
           </div>
-          <ActionPanel total={items.length} />
+          <ActionPanel items={items} />
         </>
       )}
     </section>
@@ -474,23 +567,62 @@ function DailyDigest({ items, latestUpdated }: { items: LogEntry[]; latestUpdate
 
 function Archive({
   activeDate,
+  availableMonths,
   selectedDate,
   onSelectDate,
   items,
 }: {
   activeDate: Date;
+  availableMonths: string[];
   selectedDate: string;
   onSelectDate: (value: string) => void;
   items: LogEntry[];
 }) {
-  const days = getMonthDays(activeDate, items);
+  const selectedMonth = monthKey(activeDate);
+  const selectedYear = selectedMonth.slice(0, 4);
+  const selectableMonths = availableMonths.length > 0 ? availableMonths : [selectedMonth];
+  const years = getAvailableYears(selectableMonths);
+  const months = getMonthsForYear(selectableMonths, selectedYear);
+  const monthItems = items.filter((item) => monthFromDateKey(dateKey(item.publishedAt)) === selectedMonth);
+  const days = getMonthDays(activeDate, monthItems);
   const selectedItems = items.filter((item) => dateKey(item.publishedAt) === selectedDate);
+  const handleYearChange = (value: string) => {
+    const nextMonth = getMonthsForYear(selectableMonths, value)[0];
+    if (nextMonth) onSelectDate(`${nextMonth}-01`);
+  };
+  const handleMonthChange = (value: string) => {
+    onSelectDate(`${value}-01`);
+  };
 
   return (
     <section className="archive" aria-label="归档日历">
-      <div className="section-heading">
-        <span>{monthKey(activeDate)} 归档</span>
-        <strong>{items.length}</strong>
+      <div className="archive-toolbar">
+        <div className="section-heading">
+          <span>{selectedMonth} 归档</span>
+          <strong>{monthItems.length}</strong>
+        </div>
+        <div className="archive-selectors" aria-label="归档筛选">
+          <label>
+            <span>年份</span>
+            <select onChange={(event) => handleYearChange(event.target.value)} value={selectedYear}>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year} 年
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span>月份</span>
+            <select onChange={(event) => handleMonthChange(event.target.value)} value={selectedMonth}>
+              {months.map((month) => (
+                <option key={month} value={month}>
+                  {Number(month.slice(5))} 月
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </div>
       <div className="calendar-grid">
         {days.map((day) => (
@@ -687,9 +819,12 @@ export default function App() {
   useEffect(() => {
     if (view !== "archive") return;
     if (archiveLogs.length === 0) return;
-    const hasSelected = archiveLogs.some((item) => dateKey(item.publishedAt) === selectedDate);
+    const selectedMonth = monthFromDateKey(selectedDate);
+    const monthLogs = archiveLogs.filter((item) => monthFromDateKey(dateKey(item.publishedAt)) === selectedMonth);
+    if (monthLogs.length === 0) return;
+    const hasSelected = monthLogs.some((item) => dateKey(item.publishedAt) === selectedDate);
     if (hasSelected) return;
-    const fallbackDate = getLatestDateKey(archiveLogs);
+    const fallbackDate = getLatestDateKey(monthLogs);
     if (fallbackDate) setSelectedDate(fallbackDate);
   }, [archiveLogs, selectedDate, view]);
 
@@ -755,6 +890,7 @@ export default function App() {
         ) : (
           <Archive
             activeDate={archiveActiveDate}
+            availableMonths={availableMonths}
             items={archiveLogs}
             onSelectDate={setSelectedDate}
             selectedDate={selectedDate}
