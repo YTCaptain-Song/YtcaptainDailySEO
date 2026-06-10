@@ -23,6 +23,28 @@
     "tags": ["Topic Cluster", "E-E-A-T", "Core Web Vitals", "转化率优化"]
   },
   {
+    "id": "b2b-seo-geo-ai-visibility-2026-06-09",
+    "title": "B2B SEO/GEO 持续转向曝光优先：AI 引用和原始内容更关键",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-06-09T09:40:00+08:00",
+    "sourceName": "成杰6.9 / B2B_SEO_GEO_Daily_Summary_2026-06-08",
+    "summary": "6 月 9 日的共识是：B2B 独立站不能只追排名，要同时争取 AI 引用、原始内容和品牌信任信号。",
+    "mainContent": "Google 侧没有新的大更新，但连字符域名、SEO 工具指引和 AI 搜索趋势都在强化一个方向：内容必须更像一次信息，提供现场数据、客户声音、独特洞见和清晰结构，才能更容易进入 AI 概述和答案层。对 B2B 独立站来说，KPI 需要从单纯点击扩展到 AI 可见度、引用语境和收入影响。",
+    "tags": ["GEO", "AI可见度", "E-E-A-T", "品牌信任"]
+  },
+  {
+    "id": "b2b-seo-geo-cro-playbook-2026-06-09",
+    "title": "6 月 9 日页面实操：Topic Cluster、GBP 与低摩擦转化",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-09T09:00:00+08:00",
+    "sourceName": "B2B_SEO_GEO_Strategies(6) / 成杰6.9",
+    "summary": "把 6 月 9 日的建议落到页面层：高意图长尾、结构化内容、Google Business Profile 和简化转化路径。",
+    "mainContent": "优先围绕支柱页和主题集群做页面，覆盖高意图长尾关键词、案例、对比、FAQ、白皮书和可引用证据；页面保持清晰 H1/H2、Schema、移动友好和 Core Web Vitals。转化侧要强化价值主张、信任信号和强 CTA，表单尽量精简，并用 A/B 测试、热力图和 Search Console 持续迭代。",
+    "tags": ["Topic Cluster", "Schema", "GBP", "CRO"]
+  },
+  {
     "id": "google-core-update-preferred-sources-watch-2026-06-02",
     "title": "Google 核心更新继续消化：AI Mode 测试 Preferred Sources",
     "category": "SEO",
