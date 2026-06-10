@@ -1,5 +1,28 @@
 [
   {
+    "id": "b2b-seo-geo-ai-visibility-pipeline-2026-06-10",
+    "title": "B2B SEO/GEO 进入曝光优先：AI 可见度比单纯流量更重要",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-06-10T09:40:00+08:00",
+    "sourceName": "过去24小时 Google SEO 优化 & 外贸 B2B 营销 最新实操干货简报 / 2026-06-10 B2B独立站 SEO/GEO 每日要点",
+    "sourceUrl": "https://developers.google.com/search/news",
+    "summary": "今天的共识是 B2B 独立站要同时盯传统排名、AI 引用和管道贡献，搜索结果正在从点击导向转向曝光导向。",
+    "mainContent": "优先监控 Google AI Overviews、Search Console 的 AI 相关报告，以及 ChatGPT、Perplexity、Gemini 中的品牌露出和引用页面；内容上减少泛化文章，围绕产品类别、高意图场景、客户问题和可验证证据建立主题权威。Core Web Vitals、结构化数据、来源标注和真实用户体验仍是 AI 引用与转化的底座。",
+    "tags": ["GEO", "AI可见度", "Share of Answer", "管道归因"]
+  },
+  {
+    "id": "b2b-seo-geo-cro-execution-2026-06-10",
+    "title": "6 月 10 日实操：主题集群、技术基线与低摩擦转化",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-10T09:00:00+08:00",
+    "sourceName": "B2B 网站页面 SEO + GEO + CRO 优化指南 / 成杰 6.10",
+    "summary": "把今天的内容拆成执行面：围绕支柱页和高意图长尾词做页面，配合 schema、案例和低摩擦表单提升转化。",
+    "mainContent": "先用 1-2 个 Pillar Page 带动 Topic Cluster，重点补定价、案例、对比、FAQ 和技术白皮书；老页面优先刷新而不是盲目新发。落地页首屏保持价值主张、强 CTA 和信任信号，表单控制在 4-5 个字段内，并用 A/B 测试、热力图和 GSC 持续迭代。",
+    "tags": ["Topic Cluster", "E-E-A-T", "Core Web Vitals", "转化率优化"]
+  },
+  {
     "id": "google-core-update-preferred-sources-watch-2026-06-02",
     "title": "Google 核心更新继续消化：AI Mode 测试 Preferred Sources",
     "category": "SEO",
