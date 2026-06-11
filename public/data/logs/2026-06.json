@@ -65,6 +65,39 @@
     ]
   },
   {
+    "id": "google-ai-optimization-guide-fundamentals-2026-06-08",
+    "title": "Google 再次强调：AEO/GEO/LLMO 仍要回到基础 SEO",
+    "category": "SEO",
+    "type": "news",
+    "publishedAt": "2026-06-08T09:40:00+08:00",
+    "sourceName": "Google Search Central",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "summary": "Google 的 AI 优化指南再次把重点拉回到高质量内容、清晰结构和真实用户价值，别把新名词当成捷径。",
+    "mainContent": "Google 这次的信号很直接：AEO、GEO、LLMO 这些说法并不会改变搜索的基本逻辑，真正有用的仍是原创、可验证、面向买家的内容和扎实的站内结构。外贸 B2B 站点不必追逐所谓速成工具，更该把精力放在主题权威、页面可读性、结构化数据和持续更新上。",
+    "tags": [
+      "AEO",
+      "GEO",
+      "LLMO",
+      "Google官方"
+    ]
+  },
+  {
+    "id": "b2b-seo-geo-practice-stack-2026-06-08",
+    "title": "6 月 8 日实操：GSC、产品变体、视频 SEO 与转化路径",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-08T09:00:00+08:00",
+    "sourceName": "Google Search Console / Google Keyword Planner / Ahrefs / YouTube",
+    "summary": "把已有查询数据、产品变体页、标题优化和视频元数据串起来，优先放大已经有展示的关键词和页面。",
+    "mainContent": "先导出 GSC 的查询和页面数据，围绕已有曝光词优化存量内容；产品页不要只盯主关键词，还要补齐尺寸、材质、功能等变体，并为关键组合建立独立页。标题优化要形成统一公式，视频则补关键词研究、描述、缩略图和索引所需元数据；同时继续压缩图片、启用 WebP、保持速度和移动端体验，把内容流量顺手导向询盘路径。",
+    "tags": [
+      "GSC",
+      "长尾关键词",
+      "视频SEO",
+      "Core Web Vitals"
+    ]
+  },
+  {
     "id": "google-core-update-preferred-sources-watch-2026-06-02",
     "title": "Google 核心更新继续消化：AI Mode 测试 Preferred Sources",
     "category": "SEO",
