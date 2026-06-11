@@ -5,7 +5,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-11T09:40:00+08:00",
-    "sourceName": "成杰6.11 / SEO_SEM_Daily_Briefing_2026-06-10",
+    "sourceName": "Google Search Central / Gemini App / X",
     "sourceUrl": "https://developers.google.com/search/news",
     "summary": "Google 正在把生成式 AI 绩效、本地资料管理和内容优化指南一起推进，外贸 B2B 站点要同时看 AI 可见性、内部链接和真实用户体验。",
     "mainContent": "Search Console 新增生成式 AI 绩效报告后，AI 搜索和 Discover 的可见性可以被更直接地跟踪；Gemini 与 Google Business Profile 的集成也让本地和商务资料管理更自动化。实操层面，内部链接、on-page 基础、零点击搜索、实时索引和定期审计仍是核心，B2B 营销还需要把 PPC 审计、LinkedIn lead gen、内容资产和权威信号一起纳入日常工作流。",
@@ -14,6 +14,22 @@
       "AI可见度",
       "E-E-A-T",
       "Google Business Profile"
+    ]
+  },
+  {
+    "id": "b2b-seo-geo-practice-2026-06-11",
+    "title": "6 月 11 日页面实操：长尾集群、Schema 与低摩擦转化",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-11T09:00:00+08:00",
+    "sourceName": "Google Search Central / Search Engine Journal / HubSpot / X",
+    "summary": "今天的实操重点是把 AI 可见性、内容结构和转化路径一起做，高意图长尾、主题集群、Schema、内部链接和低摩擦 CTA 需要同步推进。",
+    "mainContent": "围绕买家高意图长尾词搭建支柱页与集群页，优先补 FAQ、对比、案例和可引用数据，让页面更容易被 AI 概述和传统搜索一起识别。页面侧继续做清晰标题层级、内部链接、结构化数据、移动友好和速度优化；转化侧精简表单、前置信任信号，并把 PPC 审计、LinkedIn lead gen 和询盘归因纳入日常复盘。",
+    "tags": [
+      "GEO",
+      "Topic Cluster",
+      "Schema",
+      "CRO"
     ]
   },
   {
