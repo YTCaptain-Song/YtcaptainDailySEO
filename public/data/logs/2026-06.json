@@ -1,35 +1,51 @@
 [
   {
-    "id": "b2b-seo-geo-ai-visibility-pipeline-2026-06-10",
-    "title": "B2B SEO/GEO 进入曝光优先：AI 可见度比单纯流量更重要",
+    "id": "chengjie-seo-geo-observations-2026-06-11",
+    "title": "6 月 11 日 SEO/GEO 观察：Search Console AI 报告与 Gemini 管理 GBP",
     "category": "SEO",
     "type": "news",
-    "publishedAt": "2026-06-10T09:40:00+08:00",
-    "sourceName": "X / Google Search Central / Search Console",
+    "publishedAt": "2026-06-11T09:40:00+08:00",
+    "sourceName": "成杰6.11 / SEO_SEM_Daily_Briefing_2026-06-10",
     "sourceUrl": "https://developers.google.com/search/news",
-    "summary": "今天的共识是 B2B 独立站要同时盯传统排名、AI 引用和管道贡献，搜索结果正在从点击导向转向曝光导向。",
-    "mainContent": "优先监控 Google AI Overviews、Search Console 的 AI 相关报告，以及 ChatGPT、Perplexity、Gemini 中的品牌露出和引用页面；内容上减少泛化文章，围绕产品类别、高意图场景、客户问题和可验证证据建立主题权威。Core Web Vitals、结构化数据、来源标注和真实用户体验仍是 AI 引用与转化的底座。",
+    "summary": "Google 正在把生成式 AI 绩效、本地资料管理和内容优化指南一起推进，外贸 B2B 站点要同时看 AI 可见性、内部链接和真实用户体验。",
+    "mainContent": "Search Console 新增生成式 AI 绩效报告后，AI 搜索和 Discover 的可见性可以被更直接地跟踪；Gemini 与 Google Business Profile 的集成也让本地和商务资料管理更自动化。实操层面，内部链接、on-page 基础、零点击搜索、实时索引和定期审计仍是核心，B2B 营销还需要把 PPC 审计、LinkedIn lead gen、内容资产和权威信号一起纳入日常工作流。",
     "tags": [
       "GEO",
       "AI可见度",
-      "Share of Answer",
-      "管道归因"
+      "E-E-A-T",
+      "Google Business Profile"
     ]
   },
   {
-    "id": "b2b-seo-geo-cro-execution-2026-06-10",
-    "title": "6 月 10 日实操：主题集群、技术基线与低摩擦转化",
+    "id": "seo-sem-daily-briefing-ai-search-2026-06-10",
+    "title": "SEO/SEM 24 小时简报：AI 搜索、Schema 统计与 B2B PPC 审计",
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-10T09:00:00+08:00",
-    "sourceName": "HubSpot / Google Business Profile / X",
-    "summary": "把今天的内容拆成执行面：围绕支柱页和高意图长尾词做页面，配合 schema、案例和低摩擦表单提升转化。",
-    "mainContent": "先用 1-2 个 Pillar Page 带动 Topic Cluster，重点补定价、案例、对比、FAQ 和技术白皮书；老页面优先刷新而不是盲目新发。落地页首屏保持价值主张、强 CTA 和信任信号，表单控制在 4-5 个字段内，并用 A/B 测试、热力图和 GSC 持续迭代。",
+    "sourceName": "SEO_SEM_Daily_Briefing_2026-06-10",
+    "summary": "过去 24 小时的重点是 AI 搜索和 GEO 继续主导，Search Console 新 AI 报告、Schema 采用统计、实体一致性和 B2B PPC 审计都在影响曝光与转化。",
+    "mainContent": "Google Search Central 正在强化生成式 AI 相关可见性工具，Schema.org 也开始公开各类型的采用统计；同时，品牌在 AI 引擎中的一致性、实体清晰度和结构化数据变得比单纯点击更重要。SEM 侧要优先排查 B2B PPC 审计中的出价、关键词和落地页错误，把预算放回高意图词和品牌防守。",
     "tags": [
+      "GEO",
+      "Schema",
+      "PPC",
+      "AI可见度"
+    ]
+  },
+  {
+    "id": "b2b-seo-geo-daily-20260610-strategy",
+    "title": "B2B 网站策略：高意图长尾、语义结构与转化路径",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-10T08:40:00+08:00",
+    "sourceName": "B2B_SEO_GEO_Daily_20260610 / B2B_SEO_GEO_Strategies(7)",
+    "summary": "6 月 10 日的策略建议把重点放在曝光优先、Topic Authority、语义结构、技术基线和低摩擦转化，帮助 AI 搜索和买家决策同时受益。",
+    "mainContent": "围绕高意图长尾词和买方旅程搭建内容集群，页面使用清晰标题层级、问答式结构、数据与引用支持，并确保速度、移动友好和结构化数据。转化侧保留强 CTA、精简表单、信任信号和案例证据，持续把 SEO/GEO 流量导向询盘。",
+    "tags": [
+      "GEO",
       "Topic Cluster",
       "E-E-A-T",
-      "Core Web Vitals",
-      "转化率优化"
+      "CRO"
     ]
   },
   {
