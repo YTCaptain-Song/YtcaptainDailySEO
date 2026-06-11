@@ -5,7 +5,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-10T09:40:00+08:00",
-    "sourceName": "过去24小时 Google SEO 优化 & 外贸 B2B 营销 最新实操干货简报 / 2026-06-10 B2B独立站 SEO/GEO 每日要点",
+    "sourceName": "X / Google Search Central / Search Console",
     "sourceUrl": "https://developers.google.com/search/news",
     "summary": "今天的共识是 B2B 独立站要同时盯传统排名、AI 引用和管道贡献，搜索结果正在从点击导向转向曝光导向。",
     "mainContent": "优先监控 Google AI Overviews、Search Console 的 AI 相关报告，以及 ChatGPT、Perplexity、Gemini 中的品牌露出和引用页面；内容上减少泛化文章，围绕产品类别、高意图场景、客户问题和可验证证据建立主题权威。Core Web Vitals、结构化数据、来源标注和真实用户体验仍是 AI 引用与转化的底座。",
@@ -22,7 +22,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-10T09:00:00+08:00",
-    "sourceName": "B2B 网站页面 SEO + GEO + CRO 优化指南 / 成杰 6.10",
+    "sourceName": "HubSpot / Google Business Profile / X",
     "summary": "把今天的内容拆成执行面：围绕支柱页和高意图长尾词做页面，配合 schema、案例和低摩擦表单提升转化。",
     "mainContent": "先用 1-2 个 Pillar Page 带动 Topic Cluster，重点补定价、案例、对比、FAQ 和技术白皮书；老页面优先刷新而不是盲目新发。落地页首屏保持价值主张、强 CTA 和信任信号，表单控制在 4-5 个字段内，并用 A/B 测试、热力图和 GSC 持续迭代。",
     "tags": [
@@ -38,7 +38,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-09T09:40:00+08:00",
-    "sourceName": "成杰6.9 / B2B_SEO_GEO_Daily_Summary_2026-06-08",
+    "sourceName": "Google Search Central / Search Engine Journal / X",
     "summary": "6 月 9 日的共识是：B2B 独立站不能只追排名，要同时争取 AI 引用、原始内容和品牌信任信号。",
     "mainContent": "Google 侧没有新的大更新，但连字符域名、SEO 工具指引和 AI 搜索趋势都在强化一个方向：内容必须更像一次信息，提供现场数据、客户声音、独特洞见和清晰结构，才能更容易进入 AI 概述和答案层。对 B2B 独立站来说，KPI 需要从单纯点击扩展到 AI 可见度、引用语境和收入影响。",
     "tags": [
@@ -54,7 +54,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-09T09:00:00+08:00",
-    "sourceName": "B2B_SEO_GEO_Strategies(6) / 成杰6.9",
+    "sourceName": "HubSpot / Google Business Profile / X",
     "summary": "把 6 月 9 日的建议落到页面层：高意图长尾、结构化内容、Google Business Profile 和简化转化路径。",
     "mainContent": "优先围绕支柱页和主题集群做页面，覆盖高意图长尾关键词、案例、对比、FAQ、白皮书和可引用证据；页面保持清晰 H1/H2、Schema、移动友好和 Core Web Vitals。转化侧要强化价值主张、信任信号和强 CTA，表单尽量精简，并用 A/B 测试、热力图和 Search Console 持续迭代。",
     "tags": [
@@ -70,7 +70,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-02T09:40:00+08:00",
-    "sourceName": "Google Core Updates / Search Status / 6月2日SEO简报",
+    "sourceName": "Google Search Central / Search Status",
     "sourceUrl": "https://developers.google.com/search/docs/appearance/core-updates",
     "summary": "过去 24 小时无新的重大算法公告，但 May 2026 Core Update 影响仍在消化，AI 搜索入口继续扩展来源选择机制。",
     "mainContent": "当前重点仍是监控 Search Console 中展示、点击、CTR 与页面类型变化，不要因短期波动做大规模改版。AI Mode 测试 Preferred Sources 后，站点除了传统排名，还要争取成为用户和 AI 系统愿意优先引用的权威来源；可优先补强原创专家视角、第一手经验、结构化数据和清晰来源标注。",
@@ -87,7 +87,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-02T09:20:00+08:00",
-    "sourceName": "2026-06-02 B2B独立站 SEO/GEO 趋势要点",
+    "sourceName": "X / Reddit / Perplexity",
     "summary": "B2B 独立站增长不再只看排名和会话数，AI 答案中的被引用率、引用语境和营收管道贡献正在成为核心指标。",
     "mainContent": "独立站应把 SEO 与 GEO 分成两条轨道运营：传统 SEO 继续维护 Google 排名、长尾词和技术基础；GEO 则关注 ChatGPT、Perplexity、Google AI Overviews 等平台的品牌露出、引用页面和 Share of Answer。内容侧减少泛化文章，围绕产品类别、BOFU 场景、非泛化洞见和可验证证据建立主题权威集群，并把 AI 可见度与 CRM 线索、询盘和管道数据串起来。",
     "tags": [
@@ -103,7 +103,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-02T09:00:00+08:00",
-    "sourceName": "B2B SEO/GEO 页面优化指南（2026-06）",
+    "sourceName": "HubSpot / Slack / Zendesk / Webflow",
     "summary": "高表现 B2B 页面要同时提升主题权威、AI 可引用性和买家转化效率。",
     "mainContent": "先围绕 1-2 个 Pillar Page 建 10-20 个 Cluster Content，优先覆盖低搜索量但高意图的长尾词、定价、案例、比较表、FAQ 和技术白皮书。比起大量新发内容，优先每季度刷新高潜旧页面，补统计数据、案例研究、FAQ Schema、Organization/Product Schema 和独特见解；转化侧为关键词或买家阶段创建专属落地页，首屏放益处导向标题、强 CTA、客户 Logo、认证和 4 个字段以内表单。",
     "tags": [
@@ -119,7 +119,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-02T08:40:00+08:00",
-    "sourceName": "6月2日外贸B2B营销与SEO实操简报",
+    "sourceName": "Google Business Profile / Google Maps / X",
     "summary": "AI 搜索适应期仍要抓基础：爬取、索引、速度、结构化数据、本地信息和引用监测缺一不可。",
     "mainContent": "今日可按四条线检查：技术侧确认 Core Web Vitals、移动体验、爬取性、索引、内部链接和 Schema；AI 侧用 Clarity 或类似工具记录 AIO/AI 引用页面，观察约 30% 引用页可能不在传统第一页的情况；本地/MEO 侧维护 Google Business Profile、关键词、评论和 SNS 信号；外贸开发侧可用 Google Maps 按关键词和城市找潜在门店或工厂，再结合街景、评论和官网信息判断线索价值。",
     "tags": [
@@ -135,7 +135,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-01T09:40:00+08:00",
-    "sourceName": "Google Core Updates / Search Engine Journal / 6月1日外贸B2B简报",
+    "sourceName": "Google Search Central / Search Engine Journal",
     "sourceUrl": "https://developers.google.com/search/docs/appearance/core-updates",
     "summary": "May 2026 Core Update 预计 6 月初完成，AI Overviews 与 AI Mode 继续改变 B2B 信息类查询的点击结构。",
     "mainContent": "更新收尾阶段不要急着大规模改版，先用 GSC 对比 5 月 20 日前后的展示、点击、CTR 和页面类型变化。待波动稳定至少一周后，再优先补强受影响页面的原创经验、数据来源、作者背书、Schema 与清晰答案结构，同时记录核心主题是否进入 AI Overview、ChatGPT、Perplexity 等答案层。",
@@ -152,7 +152,7 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-01T09:20:00+08:00",
-    "sourceName": "B2B独立站 SEO & GEO 每日要点（2026-06-01）",
+    "sourceName": "X / Perplexity / ChatGPT",
     "summary": "零点击搜索和 AI 答案层抬高后，独立站增长指标要从自然流量扩展到 AI 可见度、引用语境和询盘归因。",
     "mainContent": "B2B 站点应同时维护 Google 传统排名和生成式引擎引用机会：用清晰产品规格、解决方案页、案例证据、实体一致性和结构化数据提升 AI 可解析度。相比平台店，独立站更适合沉淀品牌实体、私域询盘和行业权威内容，日常复盘建议增加 ChatGPT、Perplexity、Gemini 等平台的品牌露出与引用页面记录。",
     "tags": [
@@ -168,7 +168,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-01T09:00:00+08:00",
-    "sourceName": "B2B SEO+GEO 页面优化指南 / HubSpot、Slack、Zendesk、Webflow 案例整理",
+    "sourceName": "HubSpot / Slack / Zendesk / Webflow",
     "summary": "页面优化重点不是堆内容，而是用买家问题组织主题集群，并让搜索引擎和 AI 都能快速提取结论。",
     "mainContent": "先围绕核心产品页建立支柱页与集群页，优先覆盖定价、案例、对比、选购指南、技术白皮书等 BOFU 长尾意图。页面结构采用“问题-答案-证据-案例”，补充 FAQ/HowTo/Article Schema、作者信息、真实客户案例、统计数据和第三方背书；技术侧保持移动友好、加载速度、URL、内链、图片 alt 与清晰小标题，降低 AI 抽取和用户决策成本。",
     "tags": [
@@ -184,7 +184,7 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-01T08:40:00+08:00",
-    "sourceName": "6月1日外贸B2B实操简报 / B2B SEO+GEO 策略整理",
+    "sourceName": "X / Google Search Central / Shopify",
     "summary": "外贸 B2B 页面要同时处理区域表达、线索捕获和改版风险，避免只做内容不做转化承接。",
     "mainContent": "多语言站点应使用 hreflang、国家或语言子目录，并加入区域案例和本地关键词；落地页保留清晰价值主张、单一或分层 CTA、少于 5 个字段的小表单、预约日历、客户案例和量化 ROI。若采用 Shopify、BigCommerce 或 Headless Commerce 改版，提前规划域名、URL、重定向、Schema 和性能测试，避免架构升级造成收录与权重损失。",
     "tags": [

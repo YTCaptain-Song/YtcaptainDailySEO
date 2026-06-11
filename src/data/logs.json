@@ -5,11 +5,16 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-10T09:40:00+08:00",
-    "sourceName": "过去24小时 Google SEO 优化 & 外贸 B2B 营销 最新实操干货简报 / 2026-06-10 B2B独立站 SEO/GEO 每日要点",
+    "sourceName": "X / Google Search Central / Search Console",
     "sourceUrl": "https://developers.google.com/search/news",
     "summary": "今天的共识是 B2B 独立站要同时盯传统排名、AI 引用和管道贡献，搜索结果正在从点击导向转向曝光导向。",
     "mainContent": "优先监控 Google AI Overviews、Search Console 的 AI 相关报告，以及 ChatGPT、Perplexity、Gemini 中的品牌露出和引用页面；内容上减少泛化文章，围绕产品类别、高意图场景、客户问题和可验证证据建立主题权威。Core Web Vitals、结构化数据、来源标注和真实用户体验仍是 AI 引用与转化的底座。",
-    "tags": ["GEO", "AI可见度", "Share of Answer", "管道归因"]
+    "tags": [
+      "GEO",
+      "AI可见度",
+      "Share of Answer",
+      "管道归因"
+    ]
   },
   {
     "id": "b2b-seo-geo-cro-execution-2026-06-10",
@@ -17,10 +22,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-10T09:00:00+08:00",
-    "sourceName": "B2B 网站页面 SEO + GEO + CRO 优化指南 / 成杰 6.10",
+    "sourceName": "HubSpot / Google Business Profile / X",
     "summary": "把今天的内容拆成执行面：围绕支柱页和高意图长尾词做页面，配合 schema、案例和低摩擦表单提升转化。",
     "mainContent": "先用 1-2 个 Pillar Page 带动 Topic Cluster，重点补定价、案例、对比、FAQ 和技术白皮书；老页面优先刷新而不是盲目新发。落地页首屏保持价值主张、强 CTA 和信任信号，表单控制在 4-5 个字段内，并用 A/B 测试、热力图和 GSC 持续迭代。",
-    "tags": ["Topic Cluster", "E-E-A-T", "Core Web Vitals", "转化率优化"]
+    "tags": [
+      "Topic Cluster",
+      "E-E-A-T",
+      "Core Web Vitals",
+      "转化率优化"
+    ]
   },
   {
     "id": "b2b-seo-geo-ai-visibility-2026-06-09",
@@ -28,10 +38,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-09T09:40:00+08:00",
-    "sourceName": "成杰6.9 / B2B_SEO_GEO_Daily_Summary_2026-06-08",
+    "sourceName": "Google Search Central / Search Engine Journal / X",
     "summary": "6 月 9 日的共识是：B2B 独立站不能只追排名，要同时争取 AI 引用、原始内容和品牌信任信号。",
     "mainContent": "Google 侧没有新的大更新，但连字符域名、SEO 工具指引和 AI 搜索趋势都在强化一个方向：内容必须更像一次信息，提供现场数据、客户声音、独特洞见和清晰结构，才能更容易进入 AI 概述和答案层。对 B2B 独立站来说，KPI 需要从单纯点击扩展到 AI 可见度、引用语境和收入影响。",
-    "tags": ["GEO", "AI可见度", "E-E-A-T", "品牌信任"]
+    "tags": [
+      "GEO",
+      "AI可见度",
+      "E-E-A-T",
+      "品牌信任"
+    ]
   },
   {
     "id": "b2b-seo-geo-cro-playbook-2026-06-09",
@@ -39,10 +54,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-09T09:00:00+08:00",
-    "sourceName": "B2B_SEO_GEO_Strategies(6) / 成杰6.9",
+    "sourceName": "HubSpot / Google Business Profile / X",
     "summary": "把 6 月 9 日的建议落到页面层：高意图长尾、结构化内容、Google Business Profile 和简化转化路径。",
     "mainContent": "优先围绕支柱页和主题集群做页面，覆盖高意图长尾关键词、案例、对比、FAQ、白皮书和可引用证据；页面保持清晰 H1/H2、Schema、移动友好和 Core Web Vitals。转化侧要强化价值主张、信任信号和强 CTA，表单尽量精简，并用 A/B 测试、热力图和 Search Console 持续迭代。",
-    "tags": ["Topic Cluster", "Schema", "GBP", "CRO"]
+    "tags": [
+      "Topic Cluster",
+      "Schema",
+      "GBP",
+      "CRO"
+    ]
   },
   {
     "id": "google-core-update-preferred-sources-watch-2026-06-02",
@@ -50,11 +70,16 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-02T09:40:00+08:00",
-    "sourceName": "Google Core Updates / Search Status / 6月2日SEO简报",
+    "sourceName": "Google Search Central / Search Status",
     "sourceUrl": "https://developers.google.com/search/docs/appearance/core-updates",
     "summary": "过去 24 小时无新的重大算法公告，但 May 2026 Core Update 影响仍在消化，AI 搜索入口继续扩展来源选择机制。",
     "mainContent": "当前重点仍是监控 Search Console 中展示、点击、CTR 与页面类型变化，不要因短期波动做大规模改版。AI Mode 测试 Preferred Sources 后，站点除了传统排名，还要争取成为用户和 AI 系统愿意优先引用的权威来源；可优先补强原创专家视角、第一手经验、结构化数据和清晰来源标注。",
-    "tags": ["Google核心更新", "AI Mode", "Preferred Sources", "Search Console"]
+    "tags": [
+      "Google核心更新",
+      "AI Mode",
+      "Preferred Sources",
+      "Search Console"
+    ]
   },
   {
     "id": "b2b-share-of-answer-geo-pipeline-2026-06-02",
@@ -62,10 +87,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-02T09:20:00+08:00",
-    "sourceName": "2026-06-02 B2B独立站 SEO/GEO 趋势要点",
+    "sourceName": "X / Reddit / Perplexity",
     "summary": "B2B 独立站增长不再只看排名和会话数，AI 答案中的被引用率、引用语境和营收管道贡献正在成为核心指标。",
     "mainContent": "独立站应把 SEO 与 GEO 分成两条轨道运营：传统 SEO 继续维护 Google 排名、长尾词和技术基础；GEO 则关注 ChatGPT、Perplexity、Google AI Overviews 等平台的品牌露出、引用页面和 Share of Answer。内容侧减少泛化文章，围绕产品类别、BOFU 场景、非泛化洞见和可验证证据建立主题权威集群，并把 AI 可见度与 CRM 线索、询盘和管道数据串起来。",
-    "tags": ["B2B独立站", "Share of Answer", "GEO", "管道归因"]
+    "tags": [
+      "B2B独立站",
+      "Share of Answer",
+      "GEO",
+      "管道归因"
+    ]
   },
   {
     "id": "b2b-topic-cluster-refresh-cro-playbook-2026-06-02",
@@ -73,10 +103,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-02T09:00:00+08:00",
-    "sourceName": "B2B SEO/GEO 页面优化指南（2026-06）",
+    "sourceName": "HubSpot / Slack / Zendesk / Webflow",
     "summary": "高表现 B2B 页面要同时提升主题权威、AI 可引用性和买家转化效率。",
     "mainContent": "先围绕 1-2 个 Pillar Page 建 10-20 个 Cluster Content，优先覆盖低搜索量但高意图的长尾词、定价、案例、比较表、FAQ 和技术白皮书。比起大量新发内容，优先每季度刷新高潜旧页面，补统计数据、案例研究、FAQ Schema、Organization/Product Schema 和独特见解；转化侧为关键词或买家阶段创建专属落地页，首屏放益处导向标题、强 CTA、客户 Logo、认证和 4 个字段以内表单。",
-    "tags": ["Topic Cluster", "内容刷新", "BOFU关键词", "转化率优化"]
+    "tags": [
+      "Topic Cluster",
+      "内容刷新",
+      "BOFU关键词",
+      "转化率优化"
+    ]
   },
   {
     "id": "b2b-technical-local-ai-citation-checklist-2026-06-02",
@@ -84,10 +119,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-02T08:40:00+08:00",
-    "sourceName": "6月2日外贸B2B营销与SEO实操简报",
+    "sourceName": "Google Business Profile / Google Maps / X",
     "summary": "AI 搜索适应期仍要抓基础：爬取、索引、速度、结构化数据、本地信息和引用监测缺一不可。",
     "mainContent": "今日可按四条线检查：技术侧确认 Core Web Vitals、移动体验、爬取性、索引、内部链接和 Schema；AI 侧用 Clarity 或类似工具记录 AIO/AI 引用页面，观察约 30% 引用页可能不在传统第一页的情况；本地/MEO 侧维护 Google Business Profile、关键词、评论和 SNS 信号；外贸开发侧可用 Google Maps 按关键词和城市找潜在门店或工厂，再结合街景、评论和官网信息判断线索价值。",
-    "tags": ["Technical SEO", "AI引用", "MEO", "Google Maps"]
+    "tags": [
+      "Technical SEO",
+      "AI引用",
+      "MEO",
+      "Google Maps"
+    ]
   },
   {
     "id": "google-may-core-update-ai-search-watch-2026-06-01",
@@ -95,11 +135,16 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-01T09:40:00+08:00",
-    "sourceName": "Google Core Updates / Search Engine Journal / 6月1日外贸B2B简报",
+    "sourceName": "Google Search Central / Search Engine Journal",
     "sourceUrl": "https://developers.google.com/search/docs/appearance/core-updates",
     "summary": "May 2026 Core Update 预计 6 月初完成，AI Overviews 与 AI Mode 继续改变 B2B 信息类查询的点击结构。",
     "mainContent": "更新收尾阶段不要急着大规模改版，先用 GSC 对比 5 月 20 日前后的展示、点击、CTR 和页面类型变化。待波动稳定至少一周后，再优先补强受影响页面的原创经验、数据来源、作者背书、Schema 与清晰答案结构，同时记录核心主题是否进入 AI Overview、ChatGPT、Perplexity 等答案层。",
-    "tags": ["Google核心更新", "AI Overviews", "GSC", "E-E-A-T"]
+    "tags": [
+      "Google核心更新",
+      "AI Overviews",
+      "GSC",
+      "E-E-A-T"
+    ]
   },
   {
     "id": "b2b-independent-site-seo-geo-dual-track-2026-06-01",
@@ -107,10 +152,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-06-01T09:20:00+08:00",
-    "sourceName": "B2B独立站 SEO & GEO 每日要点（2026-06-01）",
+    "sourceName": "X / Perplexity / ChatGPT",
     "summary": "零点击搜索和 AI 答案层抬高后，独立站增长指标要从自然流量扩展到 AI 可见度、引用语境和询盘归因。",
     "mainContent": "B2B 站点应同时维护 Google 传统排名和生成式引擎引用机会：用清晰产品规格、解决方案页、案例证据、实体一致性和结构化数据提升 AI 可解析度。相比平台店，独立站更适合沉淀品牌实体、私域询盘和行业权威内容，日常复盘建议增加 ChatGPT、Perplexity、Gemini 等平台的品牌露出与引用页面记录。",
-    "tags": ["B2B独立站", "GEO", "AI可见度", "零点击搜索"]
+    "tags": [
+      "B2B独立站",
+      "GEO",
+      "AI可见度",
+      "零点击搜索"
+    ]
   },
   {
     "id": "b2b-page-seo-geo-topic-cluster-playbook-2026-06-01",
@@ -118,10 +168,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-01T09:00:00+08:00",
-    "sourceName": "B2B SEO+GEO 页面优化指南 / HubSpot、Slack、Zendesk、Webflow 案例整理",
+    "sourceName": "HubSpot / Slack / Zendesk / Webflow",
     "summary": "页面优化重点不是堆内容，而是用买家问题组织主题集群，并让搜索引擎和 AI 都能快速提取结论。",
     "mainContent": "先围绕核心产品页建立支柱页与集群页，优先覆盖定价、案例、对比、选购指南、技术白皮书等 BOFU 长尾意图。页面结构采用“问题-答案-证据-案例”，补充 FAQ/HowTo/Article Schema、作者信息、真实客户案例、统计数据和第三方背书；技术侧保持移动友好、加载速度、URL、内链、图片 alt 与清晰小标题，降低 AI 抽取和用户决策成本。",
-    "tags": ["Topic Cluster", "BOFU关键词", "Schema", "E-E-A-T"]
+    "tags": [
+      "Topic Cluster",
+      "BOFU关键词",
+      "Schema",
+      "E-E-A-T"
+    ]
   },
   {
     "id": "b2b-cro-localization-headless-seo-2026-06-01",
@@ -129,10 +184,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-06-01T08:40:00+08:00",
-    "sourceName": "6月1日外贸B2B实操简报 / B2B SEO+GEO 策略整理",
+    "sourceName": "X / Google Search Central / Shopify",
     "summary": "外贸 B2B 页面要同时处理区域表达、线索捕获和改版风险，避免只做内容不做转化承接。",
     "mainContent": "多语言站点应使用 hreflang、国家或语言子目录，并加入区域案例和本地关键词；落地页保留清晰价值主张、单一或分层 CTA、少于 5 个字段的小表单、预约日历、客户案例和量化 ROI。若采用 Shopify、BigCommerce 或 Headless Commerce 改版，提前规划域名、URL、重定向、Schema 和性能测试，避免架构升级造成收录与权重损失。",
-    "tags": ["多语言SEO", "转化率优化", "Headless Commerce", "hreflang"]
+    "tags": [
+      "多语言SEO",
+      "转化率优化",
+      "Headless Commerce",
+      "hreflang"
+    ]
   },
   {
     "id": "google-core-update-ai-serp-watch-2026-05-28",
@@ -144,7 +204,12 @@
     "sourceUrl": "https://status.search.google.com/incidents/wdAXJk6LRRihEjpzEeWE",
     "summary": "May 2026 Core Update 仍在推进，AI Overviews 与 AI Mode 让传统排名和真实点击继续分离。",
     "mainContent": "当前不要因短期波动大规模改站，先用 GSC 与 Analytics 按页面类型观察展示、点击、CTR 和停留变化。对受影响页面优先补强原创经验、E-E-A-T、清晰结构和直接答案，同时记录核心词下 AI Overview 是否出现、是否引用本站，以及排名高但点击下降的页面。",
-    "tags": ["Google核心更新", "AI Overviews", "GSC", "E-E-A-T"]
+    "tags": [
+      "Google核心更新",
+      "AI Overviews",
+      "GSC",
+      "E-E-A-T"
+    ]
   },
   {
     "id": "b2b-geo-visibility-over-traffic-2026-05-28",
@@ -152,10 +217,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-28T09:20:00+08:00",
-    "sourceName": "近期 B2B SEO 报告 / Google 更新总结",
+    "sourceName": "X / Reddit / Google Search Central",
     "summary": "零点击搜索加速后，B2B 独立站不能只看自然会话量，更要看品牌是否进入 AI 答案层。",
     "mainContent": "日常复盘建议增加三类指标：Google、Perplexity、ChatGPT、Gemini 中的品牌露出；被引用页面与引用语境；SEO/GEO 线索进入 CRM 后的有效询盘和管道贡献。内容建设上要减少泛化文章，围绕具体采购问题、产品类别、实施步骤和差异化证据建立可引用页面。",
-    "tags": ["B2B独立站", "GEO", "AI可见度", "零点击搜索"]
+    "tags": [
+      "B2B独立站",
+      "GEO",
+      "AI可见度",
+      "零点击搜索"
+    ]
   },
   {
     "id": "b2b-topic-cluster-landing-page-cro-2026-05-28",
@@ -163,10 +233,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-28T09:00:00+08:00",
-    "sourceName": "HubSpot / Slack / Zendesk / Stripe 页面实践与 B2B SEO 最佳实践",
+    "sourceName": "HubSpot / Slack / Zendesk / Stripe",
     "summary": "高转化 B2B 页面应同时服务搜索理解、AI 引用和买家决策。",
     "mainContent": "先围绕 1-2 个核心 Pillar Page 建 10-20 个 Cluster Pages，覆盖用例、对比、案例和高意图长尾词；页面表达采用“问题-答案-证据-案例”结构，并加入统计数据、专家引用、FAQ 与 Organization Schema。落地页首屏保留单一主要 CTA，表单控制在 3-5 个字段，配合客户 Logo、案例、评分或视频证言降低决策阻力。",
-    "tags": ["Topic Cluster", "长尾关键词", "落地页优化", "转化率优化"]
+    "tags": [
+      "Topic Cluster",
+      "长尾关键词",
+      "落地页优化",
+      "转化率优化"
+    ]
   },
   {
     "id": "technical-seo-ai-readability-checklist-2026-05-28",
@@ -174,10 +249,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-28T08:40:00+08:00",
-    "sourceName": "X 平台行业分享 / Search Engine Land / SERoundtable / Google Search Central",
+    "sourceName": "X / Search Engine Land / Search Engine Roundtable / Google Search Central",
     "summary": "AI 搜索环境下，技术 SEO 不只是修页面错误，而是保证内容能被发现、读取、理解和引用。",
     "mainContent": "优先检查四条线：服务器日志与 GSC 抓取状态，确认重要页面被正常发现；Core Web Vitals、TTFB 和移动体验，避免首屏过重；FAQ、Organization、Article 等 Schema 是否覆盖关键页面；分面导航、内链、站点地图和 URL 是否让搜索引擎清楚识别页面层级。新站或外贸站收录慢时，先排查抓取、内容厚度和内链，再考虑外链投入。",
-    "tags": ["Technical SEO", "Core Web Vitals", "Schema", "抓取优化"]
+    "tags": [
+      "Technical SEO",
+      "Core Web Vitals",
+      "Schema",
+      "抓取优化"
+    ]
   },
   {
     "id": "sem-paid-search-role-under-ai-serp-2026-05-28",
@@ -185,10 +265,15 @@
     "category": "SEM",
     "type": "practice",
     "publishedAt": "2026-05-28T08:20:00+08:00",
-    "sourceName": "X 平台行业分享 / Search Engine Land / SERoundtable",
+    "sourceName": "X / Search Engine Land / Search Engine Roundtable",
     "summary": "当 AI 答案层分流自然点击时，SEM 更适合作为品牌防御和底部漏斗补位。",
     "mainContent": "预算应优先覆盖品牌词、竞品截流词和明确交易意图词，避免用付费流量弥补低质量内容。落地页继续保持快加载、单一 CTA、短表单和信任证明，并把评估重点放在有效询盘率、Demo 申请率和管道贡献，而不是只看点击量或 CPC。",
-    "tags": ["SEM", "品牌词防御", "高意图词", "AI搜索"]
+    "tags": [
+      "SEM",
+      "品牌词防御",
+      "高意图词",
+      "AI搜索"
+    ]
   },
   {
     "id": "b2b-seo-geo-exposure-pipeline-shift-2026-05-26",
@@ -196,10 +281,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-26T09:40:00+08:00",
-    "sourceName": "B2B SEO/GEO 行业简报整合（2026-05-26）",
+    "sourceName": "Google Search Central / Search Engine Land / X",
     "summary": "多份简报共同指向同一变化：B2B SEO 评估重心正从单纯会话量转向 AI 可见度与商机贡献。",
     "mainContent": "在 Google 核心更新与 AI 搜索并行阶段，零点击场景增多，品牌是否被 AI 答案层引用成为新增竞争位。独立站应把“排名+点击”升级为“曝光+引用+管道”三层监测：跟踪核心主题在 ChatGPT、Perplexity、Gemini 与 AI Overview 的露出情况，同时在站内强化实体一致性、结构化数据与可验证证据，减少只看流量导致的误判。",
-    "tags": ["B2B独立站", "GEO", "AI可见度", "管道归因"]
+    "tags": [
+      "B2B独立站",
+      "GEO",
+      "AI可见度",
+      "管道归因"
+    ]
   },
   {
     "id": "b2b-page-seo-geo-conversion-playbook-2026-05-26",
@@ -207,10 +297,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-26T09:15:00+08:00",
-    "sourceName": "B2B SEO/GEO 策略文档去重整理",
+    "sourceName": "HubSpot / Slack / Zendesk / Webflow",
     "summary": "将重复度最高的页面优化建议合并为一套执行框架，覆盖获客与转化两个环节。",
     "mainContent": "内容侧以“高意图长尾词+Topic Cluster”组织页面，优先服务具体决策问题；信任侧补齐作者/案例/数据来源/客户证明等 E-E-A-T 信号；技术侧保持速度、移动体验、内链与 Schema 的稳定基线，并用清晰分层、问答段与对比信息提升 AI 抽取效率；转化侧采用单一核心 CTA、精简表单与分阶段路径（资料下载→Demo→询盘），最后用 GSC 与转化数据优先优化已有高潜力页面。",
-    "tags": ["页面优化", "长尾关键词", "E-E-A-T", "转化率优化"]
+    "tags": [
+      "页面优化",
+      "长尾关键词",
+      "E-E-A-T",
+      "转化率优化"
+    ]
   },
   {
     "id": "google-core-update-observe-then-adjust-2026-05-26",
@@ -218,11 +313,16 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-26T08:55:00+08:00",
-    "sourceName": "Google Search Status / Search Engine Land / 社区反馈整合",
+    "sourceName": "Google Search Status / Search Engine Land / Reddit",
     "sourceUrl": "https://status.search.google.com/incidents/wdAXJk6LRRihEjpzEeWE",
     "summary": "May 2026 Core Update 仍在 rollout，行业反馈显示纯 AI 批量内容和弱差异化页面更易波动。",
     "mainContent": "更新期建议暂停大规模改版，优先做分组监控：按页面类型看展示、点击、CTR 与排名变化，再针对受影响页面补强“前段直答+真实经验+证据来源”。对 B2B 站点来说，刷新旧高潜页面通常比短期批量新建更稳。",
-    "tags": ["Google核心更新", "GSC", "内容刷新", "波动监测"]
+    "tags": [
+      "Google核心更新",
+      "GSC",
+      "内容刷新",
+      "波动监测"
+    ]
   },
   {
     "id": "geo-implementation-stack-llms-schema-entity-2026-05-26",
@@ -230,10 +330,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-26T08:35:00+08:00",
-    "sourceName": "B2B GEO 策略简报合并（2026-05-26）",
+    "sourceName": "Google Search Central / X / Search Engine Journal",
     "summary": "同日多份资料重复强调：被 AI 引用不是玄学，关键在机器可解析与可验证。",
     "mainContent": "执行上可分三步：先补齐 FAQ/Article/Organization 等核心 Schema；再统一品牌、产品、创始人、案例等实体命名与 sameAs 外部映射；最后将关键页面改为“问题-答案-证据”表达，并按需维护 llms.txt，提升 AI 系统抽取与引用稳定性。",
-    "tags": ["GEO", "Schema", "实体SEO", "llms.txt"]
+    "tags": [
+      "GEO",
+      "Schema",
+      "实体SEO",
+      "llms.txt"
+    ]
   },
   {
     "id": "sem-bottom-funnel-defense-under-ai-serp-2026-05-26",
@@ -241,10 +346,15 @@
     "category": "SEM",
     "type": "practice",
     "publishedAt": "2026-05-26T08:10:00+08:00",
-    "sourceName": "SEO/SEM 每日简报整合（2026-05-26）",
+    "sourceName": "Search Engine Land / X",
     "summary": "在零点击上升阶段，付费搜索更适合作为高意图流量与转化补位工具。",
     "mainContent": "投放侧优先做两层防守：第一层品牌词防竞品截流，第二层交易意图词承接“已被教育”的买家。落地页保持单一 CTA、短表单和信任证明，重点看演示申请率、有效询盘率和管道贡献，而非只看 CPC 或点击量。",
-    "tags": ["SEM", "品牌词防御", "高意图词", "线索转化"]
+    "tags": [
+      "SEM",
+      "品牌词防御",
+      "高意图词",
+      "线索转化"
+    ]
   },
   {
     "id": "ai-crawler-control-llms-txt-sameas-2026-05-25",
@@ -252,10 +362,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-25T09:45:00+08:00",
-    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "sourceName": "Google Search Central / X",
     "summary": "除传统技术 SEO 外，AI 抓取与实体识别相关配置正在成为实操重点。",
     "mainContent": "可先做轻量升级：在 robots.txt 明确 AI 爬虫访问策略；补充 llms.txt 供大模型快速理解站点内容；用 sameAs 关联 LinkedIn、Wikipedia 等权威实体页，提升品牌与企业信息的一致性识别。",
-    "tags": ["Technical SEO", "robots.txt", "llms.txt", "sameAs"]
+    "tags": [
+      "Technical SEO",
+      "robots.txt",
+      "llms.txt",
+      "sameAs"
+    ]
   },
   {
     "id": "b2b-longtail-keyword-combo-playbook-2026-05-25",
@@ -263,10 +378,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-25T09:35:00+08:00",
-    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "sourceName": "X / Google Search Central",
     "summary": "外贸询盘型流量更依赖长尾词组合，而不是只盯行业大词。",
     "mainContent": "选词时优先围绕“产品词 + 目标地区 + 规格/认证”建组合页，并在产品页提供可验证的参数与资质信息。这样更接近采购搜索习惯，也更容易覆盖高意图需求。",
-    "tags": ["外贸SEO", "B2B营销", "长尾关键词", "询盘转化"]
+    "tags": [
+      "外贸SEO",
+      "B2B营销",
+      "长尾关键词",
+      "询盘转化"
+    ]
   },
   {
     "id": "b2b-site-tech-baseline-cdn-speed-multilingual-2026-05-25",
@@ -274,10 +394,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-25T09:25:00+08:00",
-    "sourceName": "Google SEO & B2B 24h 简报整理",
+    "sourceName": "Google Search Central / Cloudflare / X",
     "summary": "在核心更新周期内，外贸站点的基础技术质量直接影响收录稳定性和买家信任。",
     "mainContent": "优先确保页面速度与移动体验，使用 CDN 降低跨区访问延迟；多语言页面保持专业表达一致；产品详情补齐规格、认证、交付与案例信息，帮助搜索引擎和潜在客户同时判断可信度。",
-    "tags": ["外贸独立站", "网站速度", "CDN", "多语言SEO"]
+    "tags": [
+      "外贸独立站",
+      "网站速度",
+      "CDN",
+      "多语言SEO"
+    ]
   },
   {
     "id": "google-may-2026-core-update-rollout-watch-2026-05-25",
@@ -285,11 +410,16 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-25T09:20:00+08:00",
-    "sourceName": "Search Engine Land / Seroundtable",
+    "sourceName": "Search Engine Land / Search Engine Journal",
     "sourceUrl": "https://searchengineland.com/google-may-2026-core-update-rolling-out-now-478430",
     "summary": "Google 5 月核心更新仍在推进阶段，预计约两周完成，内容相关性与有用性信号权重继续提升。",
     "mainContent": "建议先按页面类型在 GSC 分组观察波动，不要因短期起伏立刻大改。优先检查页面是否真实解决用户问题，并补强本地场景所需的 LocalBusiness、FAQ、Review 等结构化信息。",
-    "tags": ["Google核心更新", "GSC", "内容质量", "本地SEO"]
+    "tags": [
+      "Google核心更新",
+      "GSC",
+      "内容质量",
+      "本地SEO"
+    ]
   },
   {
     "id": "geo-mainstream-ai-search-visibility-2026-05-25",
@@ -297,10 +427,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-25T09:00:00+08:00",
-    "sourceName": "行业公开讨论汇总（Google AI Overviews / ChatGPT / Perplexity）",
+    "sourceName": "X / Reddit / ChatGPT / Perplexity",
     "summary": "搜索流量结构继续向 AI 答案层迁移，品牌是否被引用正在影响点击与转化入口。",
     "mainContent": "除了传统排名，建议把“是否被 AI 引用”纳入日常监测：定期在 Perplexity、ChatGPT、Google AI Overviews 里检索核心主题，记录品牌露出、引用页面和更新频率，建立可复盘的 GEO 看板。",
-    "tags": ["GEO", "AI Overviews", "ChatGPT", "Perplexity"]
+    "tags": [
+      "GEO",
+      "AI Overviews",
+      "ChatGPT",
+      "Perplexity"
+    ]
   },
   {
     "id": "human-ai-hybrid-content-quality-2026-05-25",
@@ -308,10 +443,15 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-25T08:40:00+08:00",
-    "sourceName": "Search Engine Land 研究讨论",
+    "sourceName": "Search Engine Land",
     "summary": "行业数据显示 AI 生成内容占比持续走高，但缺少真实经验与证据的页面在搜索中更容易失速。",
     "mainContent": "更稳妥的做法是“人+AI”协同：AI 负责提纲与初稿，人负责加入一手经验、案例、数据和结论，最终形成更强 E-E-A-T 信号，避免低质批量内容带来的可见度风险。",
-    "tags": ["AI内容", "E-E-A-T", "内容策略", "质量优化"]
+    "tags": [
+      "AI内容",
+      "E-E-A-T",
+      "内容策略",
+      "质量优化"
+    ]
   },
   {
     "id": "sem-brand-defense-ai-ad-integration-2026-05-25",
@@ -319,10 +459,15 @@
     "category": "SEM",
     "type": "practice",
     "publishedAt": "2026-05-25T08:15:00+08:00",
-    "sourceName": "Google Shopping / 行业实操观察",
+    "sourceName": "Google Shopping / X",
     "summary": "AI 购物与 AI 搜索广告位扩展后，品牌词防守和商品信息完整度对转化稳定性影响更大。",
     "mainContent": "建议把品牌词投放作为防御底座，同时同步优化商品结构化数据、价格库存与评价信息；在 AI 搜索环境下，优先测试高意图词与品牌词组合，减少被竞品截流的风险。",
-    "tags": ["SEM", "品牌词", "Google Ads", "购物广告"]
+    "tags": [
+      "SEM",
+      "品牌词",
+      "Google Ads",
+      "购物广告"
+    ]
   },
   {
     "id": "schema-trust-signal-optimization-playbook-2026-05-25",
@@ -330,10 +475,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-25T07:55:00+08:00",
-    "sourceName": "行业案例与社区经验",
+    "sourceName": "X / Reddit / Google Search Central",
     "summary": "结构化数据的价值正在从富结果点击扩展到 AI 理解与引用，页面可信度体系需要同步升级。",
     "mainContent": "优先完善作者信息、来源引用、案例证据与主题实体关联，再配合 FAQ、HowTo、Review 等 schema，帮助搜索引擎和 AI 系统更准确识别页面角色与可信度。",
-    "tags": ["Schema", "信任信号", "实体SEO", "AI引用"]
+    "tags": [
+      "Schema",
+      "信任信号",
+      "实体SEO",
+      "AI引用"
+    ]
   },
   {
     "id": "geo-daily-action-checklist-2026-05-25",
@@ -341,10 +491,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-25T07:30:00+08:00",
-    "sourceName": "老船长实操整理",
+    "sourceName": "X / Google Search Central / Search Engine Land",
     "summary": "围绕核心更新与 AI 搜索变化，先做监控、再做内容审计、同步推进广告实验，可更快定位增长点。",
     "mainContent": "今日优先执行 6 件事：检查核心更新影响；审计页面 E-E-A-T 与 AI 可引用性；补齐 schema；强化外链与作者信号；在 ChatGPT/Perplexity 验证品牌引用；配套品牌词与 AI 广告位实验。",
-    "tags": ["行动清单", "SEO实操", "SEM联动", "GEO"]
+    "tags": [
+      "行动清单",
+      "SEO实操",
+      "SEM联动",
+      "GEO"
+    ]
   },
   {
     "id": "google-may-2026-core-update-rollout-2026-05-24",
@@ -356,7 +511,12 @@
     "sourceUrl": "https://searchengineland.com/google-may-2026-core-update-rolling-out-now-478430",
     "summary": "Google 本月第二轮核心算法更新已启动，预计 1-2 周完成，重点影响内容质量、用户体验和权威性。",
     "mainContent": "建议不要因为短期波动立刻大范围改站。先在 Search Console 中标记受影响页面，观察查询、页面类型和流量来源变化，再优先强化 E-E-A-T、用户意图匹配和页面体验。",
-    "tags": ["Google核心更新", "E-E-A-T", "Search Console", "内容质量"]
+    "tags": [
+      "Google核心更新",
+      "E-E-A-T",
+      "Search Console",
+      "内容质量"
+    ]
   },
   {
     "id": "google-ai-search-aeo-geo-seo-basics-2026-05-24",
@@ -368,7 +528,12 @@
     "sourceUrl": "https://developers.google.com/search/news",
     "summary": "Google 近期生成式 AI 优化资源强调，权威内容、相关性和用户需求满足仍是 AI 搜索可见度的核心。",
     "mainContent": "不要把 llms.txt、复杂切块或投机技巧当作主要策略。更值得做的是让页面直接回答真实用户问题，补充经验、证据、来源和结构化信息，让 AI Overviews 更容易识别你是可信来源。",
-    "tags": ["AEO", "GEO", "AI Overviews", "Google官方"]
+    "tags": [
+      "AEO",
+      "GEO",
+      "AI Overviews",
+      "Google官方"
+    ]
   },
   {
     "id": "google-ai-mode-new-ad-formats-2026-05-24",
@@ -379,7 +544,12 @@
     "sourceName": "X @yidabuilds / Hacker News",
     "summary": "Google 正在测试在 AI Overviews 下方嵌入产品推荐和 Direct Offers，用户可能不离开搜索页就完成购买决策。",
     "mainContent": "独立站和广告主需要关注 AI 搜索环境下剩余点击的竞争。购物类页面应强化商品结构化数据、价格与库存信息、首屏转化路径和评价信号，提升在 AI 结果与广告场景中的可见度。",
-    "tags": ["AI Mode", "Google Ads", "Direct Offers", "购物广告"]
+    "tags": [
+      "AI Mode",
+      "Google Ads",
+      "Direct Offers",
+      "购物广告"
+    ]
   },
   {
     "id": "google-search-box-ai-redesign-2026-05-24",
@@ -390,7 +560,12 @@
     "sourceName": "X @yidabuilds",
     "summary": "Google 搜索正在从“给 10 个链接”转向“帮用户办成事”，AI Overviews 和 AI Mode 的覆盖持续扩大。",
     "mainContent": "建议新增一个日常监测维度：核心关键词下 AI Overviews 的出现比例、引用来源和页面点击变化。传统排名仍要看，但需要同时观察品牌是否被 AI 答案引用。",
-    "tags": ["AI搜索", "AI Overviews", "排名监测", "SERP变化"]
+    "tags": [
+      "AI搜索",
+      "AI Overviews",
+      "排名监测",
+      "SERP变化"
+    ]
   },
   {
     "id": "machine-readable-brand-entity-hub-2026-05-24",
@@ -401,7 +576,12 @@
     "sourceName": "Search Engine Land",
     "summary": "品牌可见度正在从传统关键词排名扩展到实体理解、结构化数据和 AI 引用。",
     "mainContent": "建议为品牌、产品、服务、创始人、案例和行业主题建立实体枢纽。页面之间用清晰内链和一致术语连接，并补充结构化数据、FAQ、案例证据和外部权威引用，帮助搜索引擎与 AI 系统理解品牌关系。",
-    "tags": ["实体SEO", "结构化数据", "Entity Hub", "品牌SEO"]
+    "tags": [
+      "实体SEO",
+      "结构化数据",
+      "Entity Hub",
+      "品牌SEO"
+    ]
   },
   {
     "id": "focus-high-value-seo-not-fix-everything-2026-05-24",
@@ -412,7 +592,12 @@
     "sourceName": "X @RoshanAmblerRSA / Search Engine Land",
     "summary": "全面修复并不一定带来增长，应优先处理高影响页面、转化机会和业务价值更明确的问题。",
     "mainContent": "可用 Gemini、Claude 等 AI 工具加速 SEO 审计、内容差距分析和报告初稿，但最终排序要结合业务上下文。优先看能带来询盘、订单、订阅或品牌权威的页面，而不是平均用力修所有问题。",
-    "tags": ["SEO审计", "AI工具", "优先级", "内容差距"]
+    "tags": [
+      "SEO审计",
+      "AI工具",
+      "优先级",
+      "内容差距"
+    ]
   },
   {
     "id": "modern-seo-blueprint-semantic-ai-optimization-2026-05-24",
@@ -423,7 +608,12 @@
     "sourceName": "LinkedIn @mohammed_mia",
     "summary": "现代 SEO 更强调语义覆盖和意图匹配，而不是单纯堆关键词。",
     "mainContent": "内容规划时先拆分用户意图，再围绕主题实体、相关问题、对比维度和实际决策点组织页面。标题和正文要直接解决需求，让人和 AI 都能快速判断页面价值。",
-    "tags": ["语义SEO", "关键词研究", "搜索意图", "AI优化"]
+    "tags": [
+      "语义SEO",
+      "关键词研究",
+      "搜索意图",
+      "AI优化"
+    ]
   },
   {
     "id": "local-seo-consistent-updates-2026-05-23",
@@ -434,7 +624,12 @@
     "sourceName": "X @fukuro_y__coder",
     "summary": "地方企业在 Google Maps 和本地搜索中胜出，往往靠长期更新照片、信息和服务细节。",
     "mainContent": "多数竞品做不到持续维护。建议每月更新门店照片、产品图、营业信息、服务说明和客户评价回复；中文市场的地图、本地生活平台和独立站本地页也适用这个思路。",
-    "tags": ["本地SEO", "Google Maps", "门店优化", "持续更新"]
+    "tags": [
+      "本地SEO",
+      "Google Maps",
+      "门店优化",
+      "持续更新"
+    ]
   },
   {
     "id": "seo-traffic-tracking-quality-sessions-2026-05-23",
@@ -445,7 +640,12 @@
     "sourceName": "Search Engine Land",
     "summary": "有机流量仍值得追踪，但更应关注高质量会话、转化和业务结果，而不是所有点击。",
     "mainContent": "建议把自然流量拆成品牌词、非品牌词、内容型入口、产品型入口和转化路径。重点看带来询盘、加购、订阅或深度浏览的会话，同时结合 AI Overviews 出现率判断点击变化原因。",
-    "tags": ["SEO数据", "转化追踪", "高质量流量", "GA4"]
+    "tags": [
+      "SEO数据",
+      "转化追踪",
+      "高质量流量",
+      "GA4"
+    ]
   },
   {
     "id": "linkedin-personal-seo-profile-optimization-2026-05-23",
@@ -453,10 +653,15 @@
     "category": "SEO",
     "type": "practice",
     "publishedAt": "2026-05-23T19:45:00+08:00",
-    "sourceName": "LinkedIn / X 讨论",
+    "sourceName": "LinkedIn / X",
     "summary": "个人主页也有搜索优化空间，尤其是标题、About、技能词和服务关键词。",
     "mainContent": "可以用提示词生成多个标题版本，把岗位、行业、核心技能和结果导向词放进标题与 About 中。适合招聘搜索、顾问获客、B2B 个人品牌和外贸业务开发。",
-    "tags": ["LinkedIn SEO", "个人品牌", "招聘搜索", "B2B获客"]
+    "tags": [
+      "LinkedIn SEO",
+      "个人品牌",
+      "招聘搜索",
+      "B2B获客"
+    ]
   },
   {
     "id": "japan-seo-news-reddit-programmatic-seo-2026-05-23",
@@ -464,9 +669,14 @@
     "category": "SEO",
     "type": "news",
     "publishedAt": "2026-05-23T17:30:00+08:00",
-    "sourceName": "日本 SEO 新闻汇总 / Reddit",
+    "sourceName": "Reddit / X",
     "summary": "5 月 23 日日本 SEO 汇总关注 Google 搜索、AI Overview、Discover；Reddit 则热议程序化 SEO 和 HEO。",
     "mainContent": "旅行 affiliate、程序化页面、2026 SEO 预期和 HEO（Hybrid Engine Optimization）讨论活跃。可借鉴的重点是：规模化内容必须有真实数据、可筛选体验和独特价值，否则很容易被 AI 摘要和核心更新削弱。",
-    "tags": ["程序化SEO", "HEO", "Discover", "Reddit讨论"]
+    "tags": [
+      "程序化SEO",
+      "HEO",
+      "Discover",
+      "Reddit讨论"
+    ]
   }
 ]

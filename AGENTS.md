@@ -30,6 +30,7 @@ This project is the static Vite + React site for "老船长航海日志".
 - Validate content after edits with `node scripts/validate-data.mjs`.
 - Keep `publishedAt` in ISO format with `+08:00` and write display content in Chinese.
 - Use `type: "practice"` for technical/actionable items and `type: "news"` for industry updates.
+- `sourceName` must describe the concrete platform, account, or official site that the item came from, such as `Google Search Central`, `Search Engine Land`, `X @handle`, or `LinkedIn @handle`. Do not use local document filenames or note titles as the source name.
 
 ## Daily brief integration rule
 

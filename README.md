@@ -13,7 +13,7 @@
   "category": "SEO",
   "type": "practice",
   "publishedAt": "2026-05-24T09:30:00+08:00",
-  "sourceName": "来源名称",
+  "sourceName": "平台/账号/官方站点名称",
   "sourceUrl": "https://example.com",
   "summary": "一句话摘要",
   "mainContent": "主要内容",
@@ -23,6 +23,7 @@
 
 - `category` 只能是 `SEO` 或 `SEM`。
 - `type` 只能是 `practice` 或 `news`。
+- `sourceName` 应写成具体平台、账号或官方站点名称，不要写本地文档名或整理标题。
 - `sourceUrl` 可以省略。
 - `tags` 可以是空数组。
 - 首页会自动展示当前时间往前 24 小时内的记录，其他记录进入归档日历。
