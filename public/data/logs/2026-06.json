@@ -1,5 +1,23 @@
 [
   {
+    "id": "seo-competitor-reverse-engineering-practice-2026-06-15",
+    "title": "6 月 15 日实操：先看竞品打法，再补页面与本地目录SEO",
+    "category": "SEO",
+    "type": "practice",
+    "publishedAt": "2026-06-15T09:00:00+08:00",
+    "sourceName": "X / Search Engine Land / HackerNoon / LinkedIn",
+    "summary": "今天的重点不是套通用清单，而是先拆目标关键词前 10 名页面，再针对页面结构、图片 alt、Meta 描述、本地目录和转化路径做定向优化。",
+    "mainContent": "把 SEO 当成比赛录像来拆：优先研究目标关键词前 10 名页面的反向链接、内容深度、页面结构、站点特征和明显短板，再决定自己的打法。页面层面补好图片 alt、贴合意图的 Meta 描述和更合适的标题长度；目录页和本地业务则要做类别意图、位置修饰词、内链结构和索引证据，避免薄内容风险。整体思路是先把现有资产做扎实，再把自然流量接到询盘和销售转化上，SEO 才会变成长期资产，而不是一次性速成项目。",
+    "tags": [
+      "竞争对手分析",
+      "页面优化",
+      "本地SEO",
+      "目录SEO",
+      "长期策略",
+      "转化"
+    ]
+  },
+  {
     "id": "chengjie-seo-geo-observations-2026-06-11",
     "title": "6 月 11 日 SEO/GEO 观察：Search Console AI 报告与 Gemini 管理 GBP",
     "category": "SEO",
