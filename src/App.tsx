@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { FormEvent, ReactNode } from "react";
 import type { LogEntry, LogType } from "./types";
 
 const timeZone = "Asia/Shanghai";
@@ -17,6 +18,11 @@ async function fetchMonthLogs(month: string): Promise<LogEntry[] | null> {
     return null;
   }
 }
+
+const adminDraftKey = "captain-logbook-admin-draft-v1";
+const adminSessionKey = "captain-logbook-admin-session-v1";
+const adminUsername = "外贸老船长";
+const adminPassword = "jybspy19911022";
 
 const typeLabels: Record<LogType, string> = {
   practice: "技术实操",
@@ -298,6 +304,139 @@ function splitAdvice(value: string) {
     .slice(0, 3);
 }
 
+function renderRichText(value: string) {
+  const pattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null = null;
+
+  while ((match = pattern.exec(value))) {
+    const [full, label, url] = match;
+    if (match.index > lastIndex) {
+      nodes.push(<span key={`text-${lastIndex}`}>{value.slice(lastIndex, match.index)}</span>);
+    }
+    nodes.push(
+      <a href={url} key={`link-${match.index}`} rel="noreferrer" target="_blank">
+        {label}
+      </a>,
+    );
+    lastIndex = match.index + full.length;
+  }
+
+  if (lastIndex < value.length) {
+    nodes.push(<span key={`text-${lastIndex}`}>{value.slice(lastIndex)}</span>);
+  }
+
+  return nodes.length > 0 ? nodes : value;
+}
+
+function sortLogsDesc(items: LogEntry[]) {
+  return [...items].sort(compareLogs);
+}
+
+function makeLogId(title: string, publishedAt: string) {
+  const slug = title
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 40);
+  const date = publishedAt.slice(0, 10);
+  return `${slug || "log"}-${date}`;
+}
+
+function createEmptyLogEntry(publishedAt = "2026-06-15T09:00:00+08:00"): LogEntry {
+  return {
+    id: makeLogId("新日志", publishedAt),
+    title: "",
+    category: "SEO",
+    type: "practice",
+    publishedAt,
+    sourceName: "",
+    sourceUrl: "",
+    summary: "",
+    mainContent: "",
+    tags: [],
+  };
+}
+
+function splitPublishedAt(value: string) {
+  const [date = "", timeWithZone = "09:00:00+08:00"] = value.split("T");
+  const time = timeWithZone.slice(0, 5);
+  return { date, time };
+}
+
+function combinePublishedAt(date: string, time: string) {
+  const normalizedTime = /^\d{2}:\d{2}$/.test(time) ? `${time}:00` : "09:00:00";
+  return `${date}T${normalizedTime}+08:00`;
+}
+
+function normalizeTags(value: string) {
+  return value
+    .split(/[,，\n]/)
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
+function normalizeLogEntry(value: unknown): LogEntry | null {
+  if (!value || typeof value !== "object") return null;
+  const candidate = value as Partial<LogEntry>;
+  const publishedAt =
+    typeof candidate.publishedAt === "string" && candidate.publishedAt.trim().length > 0
+      ? candidate.publishedAt
+      : "2026-06-15T09:00:00+08:00";
+  const title = typeof candidate.title === "string" ? candidate.title : "";
+  return {
+    id:
+      typeof candidate.id === "string" && candidate.id.trim().length > 0
+        ? candidate.id.trim()
+        : makeLogId(title || "新日志", publishedAt),
+    title,
+    category: candidate.category === "SEM" ? "SEM" : "SEO",
+    type: candidate.type === "news" ? "news" : "practice",
+    publishedAt,
+    sourceName: typeof candidate.sourceName === "string" ? candidate.sourceName : "",
+    sourceUrl:
+      typeof candidate.sourceUrl === "string" && candidate.sourceUrl.trim().length > 0
+        ? candidate.sourceUrl
+        : undefined,
+    summary: typeof candidate.summary === "string" ? candidate.summary : "",
+    mainContent: typeof candidate.mainContent === "string" ? candidate.mainContent : "",
+    tags: Array.isArray(candidate.tags)
+      ? candidate.tags.filter((tag): tag is string => typeof tag === "string")
+      : [],
+  };
+}
+
+function stringifyTags(tags: string[]) {
+  return tags.join(", ");
+}
+
+function getAdminValidationIssues(item: LogEntry, allItems: LogEntry[]) {
+  const issues: string[] = [];
+  const trimmedFields = [
+    ["id", item.id],
+    ["title", item.title],
+    ["sourceName", item.sourceName],
+    ["summary", item.summary],
+    ["mainContent", item.mainContent],
+  ] as const;
+
+  trimmedFields.forEach(([label, value]) => {
+    if (!value.trim()) issues.push(`${label} 不能为空`);
+  });
+
+  if (!["SEO", "SEM"].includes(item.category)) issues.push("category 必须是 SEO 或 SEM");
+  if (!["practice", "news"].includes(item.type)) issues.push("type 必须是 practice 或 news");
+  if (Number.isNaN(new Date(item.publishedAt).getTime())) issues.push("publishedAt 不是合法时间");
+  if (item.tags.some((tag) => !tag.trim())) issues.push("tags 里不能有空值");
+
+  const duplicateCount = allItems.filter((other) => other.id === item.id).length;
+  if (duplicateCount > 1) issues.push("id 不能重复");
+
+  return issues;
+}
+
 function filterLogs(
   items: LogEntry[],
   query: string,
@@ -412,7 +551,7 @@ function FilterPanel({
   );
 }
 
-function LogCard({ item, index }: { item: LogEntry; index?: number }) {
+function LogCard({ item, index, showMainContent = false }: { item: LogEntry; index?: number; showMainContent?: boolean }) {
   const advice = splitAdvice(item.mainContent);
 
   return (
@@ -436,6 +575,12 @@ function LogCard({ item, index }: { item: LogEntry; index?: number }) {
               <li key={line}>{line}</li>
             ))}
           </ul>
+        </div>
+      )}
+      {showMainContent && item.mainContent && (
+        <div className="content-block">
+          <strong>正文</strong>
+          <p className="content">{renderRichText(item.mainContent)}</p>
         </div>
       )}
       <div className="card-footer">
@@ -650,6 +795,527 @@ function Archive({
   );
 }
 
+function downloadTextFile(filename: string, text: string, mimeType = "application/json") {
+  const blob = new Blob([text], { type: `${mimeType};charset=utf-8` });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function LogAdmin({
+  items,
+  isReady,
+  isAuthenticated,
+  onAuthenticate,
+  onLogout,
+}: {
+  items: LogEntry[];
+  isReady: boolean;
+  isAuthenticated: boolean;
+  onAuthenticate: (username: string, password: string) => boolean;
+  onLogout: () => void;
+}) {
+  const [draftLogs, setDraftLogs] = useState<LogEntry[] | null>(() => {
+    if (typeof window === "undefined") return null;
+    const saved = window.localStorage.getItem(adminDraftKey);
+    if (!saved) return null;
+    try {
+      const parsed = JSON.parse(saved) as unknown;
+      return Array.isArray(parsed)
+        ? (parsed.map((item) => normalizeLogEntry(item)).filter((item): item is LogEntry => item !== null) as LogEntry[])
+        : null;
+    } catch {
+      return null;
+    }
+  });
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [notice, setNotice] = useState<string>("编辑内容会暂存到浏览器本地，不会直接同步到 GitHub。");
+  const [isImporting, setIsImporting] = useState(false);
+  const mainContentRef = useRef<HTMLTextAreaElement | null>(null);
+  const fileInputId = "log-admin-import-input";
+
+  useEffect(() => {
+    if (draftLogs !== null) return;
+    if (!isReady || items.length === 0) return;
+    setDraftLogs(
+      sortLogsDesc(items.map((item) => normalizeLogEntry(item)).filter((item): item is LogEntry => item !== null)),
+    );
+    setSelectedId(items[0]?.id ?? null);
+  }, [draftLogs, isReady, items]);
+
+  useEffect(() => {
+    if (draftLogs === null || typeof window === "undefined") return;
+    window.localStorage.setItem(adminDraftKey, JSON.stringify(draftLogs));
+  }, [draftLogs]);
+
+  useEffect(() => {
+    if (selectedId) return;
+    if (draftLogs && draftLogs.length > 0) {
+      setSelectedId(draftLogs[0].id);
+      return;
+    }
+    if (items.length > 0) setSelectedId(items[0].id);
+  }, [draftLogs, items, selectedId]);
+
+  const logs = draftLogs ?? [];
+  const filteredLogs = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return logs.filter((item) => {
+      if (!normalizedQuery) return true;
+      const haystack = [
+        item.id,
+        item.title,
+        item.sourceName,
+        item.summary,
+        item.mainContent,
+        item.tags.join(" "),
+        item.publishedAt,
+      ]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(normalizedQuery);
+    });
+  }, [logs, query]);
+  const selectedItem = logs.find((item) => item.id === selectedId) ?? filteredLogs[0] ?? null;
+  const selectedIssues = selectedItem ? getAdminValidationIssues(selectedItem, logs) : [];
+  const totalTags = useMemo(() => new Set(logs.flatMap((item) => item.tags)).size, [logs]);
+  const totalPublishedDays = useMemo(
+    () => new Set(logs.map((item) => dateKey(item.publishedAt))).size,
+    [logs],
+  );
+
+  useEffect(() => {
+    if (!selectedItem) return;
+    if (selectedId === selectedItem.id) return;
+    setSelectedId(selectedItem.id);
+  }, [selectedId, selectedItem]);
+
+  function updateSelected(updater: (current: LogEntry) => LogEntry) {
+    if (!selectedItem) return;
+    setDraftLogs((current) => {
+      const source = current ?? [];
+      return sortLogsDesc(source.map((item) => (item.id === selectedItem.id ? updater(item) : item)));
+    });
+  }
+
+  function insertMainContentLink() {
+    const target = mainContentRef.current;
+    if (!target || !selectedItem) return;
+
+    const url = window.prompt("请输入链接 URL", "https://");
+    if (!url) return;
+
+    const selectionStart = target.selectionStart ?? selectedItem.mainContent.length;
+    const selectionEnd = target.selectionEnd ?? selectionStart;
+    const selectedText = selectedItem.mainContent.slice(selectionStart, selectionEnd).trim();
+    const fallbackLabel = selectedText || "查看来源";
+    const label = window.prompt("链接文字", fallbackLabel) || fallbackLabel;
+    const insertText = `[${label}](${url})`;
+    const nextValue =
+      selectedItem.mainContent.slice(0, selectionStart) +
+      insertText +
+      selectedItem.mainContent.slice(selectionEnd);
+
+    updateSelected((current) => ({ ...current, mainContent: nextValue }));
+    setNotice("已插入 Markdown 链接。");
+    window.setTimeout(() => {
+      const nextCursor = selectionStart + insertText.length;
+      target.focus();
+      target.setSelectionRange(nextCursor, nextCursor);
+    }, 0);
+  }
+
+  function addNewLog() {
+    const next = createEmptyLogEntry();
+    setDraftLogs((current) => sortLogsDesc([next, ...(current ?? [])]));
+    setSelectedId(next.id);
+    setNotice("已创建新记录，继续填写即可。");
+  }
+
+  function duplicateLog() {
+    if (!selectedItem) return;
+    const nowParts = splitPublishedAt(selectedItem.publishedAt);
+    const publishedAt = combinePublishedAt(nowParts.date, nowParts.time);
+    const clone: LogEntry = {
+      ...selectedItem,
+      id: `${selectedItem.id}-copy`,
+      title: `${selectedItem.title}（副本）`,
+      publishedAt,
+    };
+    setDraftLogs((current) => sortLogsDesc([clone, ...(current ?? [])]));
+    setSelectedId(clone.id);
+    setNotice("已复制当前记录，可直接改成新条目。");
+  }
+
+  function removeLog() {
+    if (!selectedItem) return;
+    const confirmed = window.confirm(`确定删除「${selectedItem.title || selectedItem.id}」吗？`);
+    if (!confirmed) return;
+    setDraftLogs((current) => {
+      const next = (current ?? []).filter((item) => item.id !== selectedItem.id);
+      return next.length > 0 ? next : [createEmptyLogEntry()];
+    });
+    setSelectedId((current) => {
+      const remaining = logs.filter((item) => item.id !== selectedItem.id);
+      return remaining[0]?.id ?? null;
+    });
+    setNotice("已删除当前记录。");
+  }
+
+  function resetDraft() {
+    const next = sortLogsDesc(items);
+    setDraftLogs(next);
+    setSelectedId(next[0]?.id ?? null);
+    if (typeof window !== "undefined") window.localStorage.removeItem(adminDraftKey);
+    setNotice("已恢复为线上数据快照。");
+  }
+
+  function exportLogs() {
+    const payload = JSON.stringify(sortLogsDesc(draftLogs ?? []), null, 2);
+    downloadTextFile("logs.json", `${payload}\n`);
+    setNotice("已导出 logs.json。");
+  }
+
+  async function copyLogs() {
+    const payload = JSON.stringify(sortLogsDesc(draftLogs ?? []), null, 2);
+    await navigator.clipboard.writeText(`${payload}\n`);
+    setNotice("已复制 JSON 到剪贴板。");
+  }
+
+  async function importLogs(file: File) {
+    setIsImporting(true);
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as unknown;
+      if (!Array.isArray(parsed)) throw new Error("导入文件必须是数组");
+      const next = sortLogsDesc(
+        parsed.map((item) => normalizeLogEntry(item)).filter((item): item is LogEntry => item !== null),
+      );
+      setDraftLogs(next);
+      setSelectedId(next[0]?.id ?? null);
+      setNotice("已导入新的日志数组。");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "导入失败";
+      setNotice(message);
+    } finally {
+      setIsImporting(false);
+    }
+  }
+
+  function handleLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const ok = onAuthenticate(loginUsername, loginPassword);
+    if (!ok) {
+      setLoginError("账号或密码不正确。");
+      return;
+    }
+    setLoginError("");
+    setNotice("已登录后台。");
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <section className="admin-panel" aria-label="日志后台登录">
+        <div className="admin-hero">
+          <div>
+            <span className="section-kicker">日志后台</span>
+            <h2>先登录再编辑</h2>
+            <p>输入账号和密码后才能进入日志编辑器。</p>
+          </div>
+          <div className="admin-stats">
+            <div>
+              <span>状态</span>
+              <strong>未登录</strong>
+            </div>
+            <div>
+              <span>数据</span>
+              <strong>{items.length}</strong>
+            </div>
+            <div>
+              <span>权限</span>
+              <strong>受限</strong>
+            </div>
+          </div>
+        </div>
+
+        <form className="admin-login-card" onSubmit={handleLogin}>
+          <label>
+            <span>账号</span>
+            <input onChange={(event) => setLoginUsername(event.target.value)} value={loginUsername} />
+          </label>
+          <label>
+            <span>密码</span>
+            <input
+              onChange={(event) => setLoginPassword(event.target.value)}
+              type="password"
+              value={loginPassword}
+            />
+          </label>
+          <div className="admin-login-actions">
+            <button type="submit">登录后台</button>
+            <button
+              onClick={() => {
+                setLoginUsername("");
+                setLoginPassword("");
+                setLoginError("");
+              }}
+              type="button"
+            >
+              清空
+            </button>
+          </div>
+          {loginError ? <p className="admin-login-error">{loginError}</p> : <p className="admin-login-hint">登录后会在本次浏览器会话中保持状态。</p>}
+        </form>
+      </section>
+    );
+  }
+
+  if (!draftLogs && !isReady) {
+    return (
+      <section className="admin-panel" aria-label="日志后台">
+        <div className="admin-hero">
+          <span className="section-kicker">日志后台</span>
+          <h2>正在装载可编辑数据</h2>
+          <p>我们会先把月归档拉齐，再把编辑器打开，避免只看到半截数据。</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="admin-panel" aria-label="日志后台">
+      <div className="admin-hero">
+        <div>
+          <span className="section-kicker">日志后台</span>
+          <h2>简单日志编辑器</h2>
+          <p>先在这里编辑、预览、导出，再把 `src/data/logs.json` 回写到仓库。</p>
+        </div>
+        <div className="admin-stats">
+          <div>
+            <span>记录数</span>
+            <strong>{logs.length}</strong>
+          </div>
+          <div>
+            <span>覆盖天数</span>
+            <strong>{totalPublishedDays}</strong>
+          </div>
+          <div>
+            <span>标签数</span>
+            <strong>{totalTags}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div className="admin-toolbar">
+        <label className="search-box admin-search">
+          <span className="filter-label">搜索日志</span>
+          <input onChange={(event) => setQuery(event.target.value)} placeholder="标题、ID、来源、标签" type="search" value={query} />
+        </label>
+        <div className="admin-actions">
+          <button onClick={onLogout} type="button">退出登录</button>
+          <button onClick={addNewLog} type="button">新建</button>
+          <button onClick={duplicateLog} type="button" disabled={!selectedItem}>复制</button>
+          <button onClick={removeLog} type="button" disabled={!selectedItem}>删除</button>
+          <button onClick={resetDraft} type="button">恢复线上</button>
+          <button onClick={copyLogs} type="button" disabled={logs.length === 0}>复制 JSON</button>
+          <button onClick={exportLogs} type="button" disabled={logs.length === 0}>导出文件</button>
+          <label className="import-button" htmlFor={fileInputId}>
+            {isImporting ? "导入中…" : "导入 JSON"}
+          </label>
+          <input
+            accept="application/json"
+            aria-label="导入 JSON"
+            className="sr-only"
+            disabled={isImporting}
+            id={fileInputId}
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void importLogs(file);
+              event.currentTarget.value = "";
+            }}
+            type="file"
+          />
+        </div>
+      </div>
+
+      <div className="admin-layout">
+        <aside className="admin-sidebar">
+          <div className="admin-sidebar-heading">
+            <strong>日志列表</strong>
+            <span>{filteredLogs.length} 条</span>
+          </div>
+          <div className="admin-list">
+            {filteredLogs.map((item) => (
+              <button
+                className={item.id === selectedItem?.id ? "admin-list-item active" : "admin-list-item"}
+                key={item.id}
+                onClick={() => setSelectedId(item.id)}
+                type="button"
+              >
+                <span>{item.title || "未命名记录"}</span>
+                <small>{item.publishedAt.slice(0, 10)} · {item.category} · {item.type}</small>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        <div className="admin-editor-shell">
+          {selectedItem ? (
+            <>
+              <div className="admin-form-grid">
+                <label>
+                  <span>ID</span>
+                  <input
+                    onChange={(event) => {
+                      const nextId = event.target.value;
+                      setSelectedId(nextId);
+                      updateSelected((current) => ({ ...current, id: nextId }));
+                    }}
+                    value={selectedItem.id}
+                  />
+                </label>
+                <label>
+                  <span>标题</span>
+                  <input
+                    onChange={(event) => updateSelected((current) => ({ ...current, title: event.target.value }))}
+                    value={selectedItem.title}
+                  />
+                </label>
+                <label>
+                  <span>分类</span>
+                  <select
+                    onChange={(event) => updateSelected((current) => ({ ...current, category: event.target.value as "SEO" | "SEM" }))}
+                    value={selectedItem.category}
+                  >
+                    <option value="SEO">SEO</option>
+                    <option value="SEM">SEM</option>
+                  </select>
+                </label>
+                <label>
+                  <span>类型</span>
+                  <select
+                    onChange={(event) => updateSelected((current) => ({ ...current, type: event.target.value as LogType }))}
+                    value={selectedItem.type}
+                  >
+                    <option value="practice">practice</option>
+                    <option value="news">news</option>
+                  </select>
+                </label>
+                <label>
+                  <span>日期</span>
+                  <input
+                    onChange={(event) => {
+                      const { time } = splitPublishedAt(selectedItem.publishedAt);
+                      updateSelected((current) => ({ ...current, publishedAt: combinePublishedAt(event.target.value, time) }));
+                    }}
+                    type="date"
+                    value={splitPublishedAt(selectedItem.publishedAt).date}
+                  />
+                </label>
+                <label>
+                  <span>时间</span>
+                  <div className="time-inline">
+                    <input
+                      onChange={(event) => {
+                        const { date } = splitPublishedAt(selectedItem.publishedAt);
+                        updateSelected((current) => ({ ...current, publishedAt: combinePublishedAt(date, event.target.value) }));
+                      }}
+                      type="time"
+                      value={splitPublishedAt(selectedItem.publishedAt).time}
+                    />
+                    <span>+08:00</span>
+                  </div>
+                </label>
+                <label className="span-2">
+                  <span>来源名称</span>
+                  <input
+                    onChange={(event) => updateSelected((current) => ({ ...current, sourceName: event.target.value }))}
+                    value={selectedItem.sourceName}
+                  />
+                </label>
+                <label className="span-2">
+                  <span>来源链接</span>
+                  <input
+                    onChange={(event) => updateSelected((current) => ({ ...current, sourceUrl: event.target.value }))}
+                    placeholder="可留空"
+                    value={selectedItem.sourceUrl ?? ""}
+                  />
+                </label>
+                <label className="span-2">
+                  <span>摘要</span>
+                  <textarea
+                    onChange={(event) => updateSelected((current) => ({ ...current, summary: event.target.value }))}
+                    rows={3}
+                    value={selectedItem.summary}
+                  />
+                </label>
+                <label className="span-2">
+                  <span>正文</span>
+                  <div className="editor-field-actions">
+                    <button onClick={insertMainContentLink} type="button">插入链接</button>
+                    <span>支持 Markdown 链接：`[文字](https://...)`</span>
+                  </div>
+                  <textarea
+                    ref={mainContentRef}
+                    onChange={(event) => updateSelected((current) => ({ ...current, mainContent: event.target.value }))}
+                    rows={8}
+                    value={selectedItem.mainContent}
+                  />
+                </label>
+                <label className="span-2">
+                  <span>标签</span>
+                  <textarea
+                    onChange={(event) => updateSelected((current) => ({ ...current, tags: normalizeTags(event.target.value) }))}
+                    rows={2}
+                    value={stringifyTags(selectedItem.tags)}
+                  />
+                </label>
+              </div>
+
+              <div className="admin-feedback">
+                <div>
+                  <strong>状态</strong>
+                  <p>{notice}</p>
+                </div>
+                <div>
+                  <strong>校验</strong>
+                  <ul>
+                    {selectedIssues.length > 0 ? (
+                      selectedIssues.map((issue) => <li key={issue}>{issue}</li>)
+                    ) : (
+                      <li>当前条目看起来没有明显结构问题。</li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="admin-preview">
+                <div className="section-heading">
+                  <span>预览</span>
+                  <strong>{selectedItem.category}</strong>
+                </div>
+                <LogCard item={selectedItem} showMainContent />
+              </div>
+            </>
+          ) : (
+            <div className="empty-state">
+              <h3>还没有可编辑的记录</h3>
+              <p>可以先导入 JSON，或者新建一条空白记录开始。</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -675,30 +1341,51 @@ export default function App() {
   const defaultSelectedDate = dateKey(now);
   const initialDateFromUrl = useMemo(() => {
     if (typeof window === "undefined") return null;
-    const value = new URLSearchParams(window.location.search).get("date");
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("mode") === "admin") return "admin";
+    const value = params.get("date");
     return isValidDateKey(value) ? value : null;
   }, []);
   const [availableMonths, setAvailableMonths] = useState<string[]>([]);
   const [monthLogs, setMonthLogs] = useState<Record<string, LogEntry[] | null>>({});
-  const [view, setView] = useState<"latest" | "archive">(initialDateFromUrl ? "archive" : "latest");
-  const [selectedDate, setSelectedDate] = useState(initialDateFromUrl ?? defaultSelectedDate);
+  const [adminAuthenticated, setAdminAuthenticated] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.sessionStorage.getItem(adminSessionKey) === "1";
+  });
+  const [view, setView] = useState<"latest" | "archive" | "admin">(
+    initialDateFromUrl === "admin" ? "admin" : initialDateFromUrl ? "archive" : "latest",
+  );
+  const [selectedDate, setSelectedDate] = useState(initialDateFromUrl === "admin" ? defaultSelectedDate : initialDateFromUrl ?? defaultSelectedDate);
   const [isLoadingLogs, setIsLoadingLogs] = useState(false);
 
   const monthsNeeded = useMemo(() => {
     const archiveMonth = monthFromDateKey(selectedDate);
     const latestBase = [currentMonth, prevMonth];
-    const archiveBase = [archiveMonth, currentMonth, prevMonth];
-    const base = view === "latest" ? latestBase : archiveBase;
+    const archiveBase = [archiveMonth];
+    const adminBase = availableMonths.length > 0 ? availableMonths : [currentMonth];
+    const base = view === "latest" ? latestBase : view === "archive" ? archiveBase : adminBase;
     const months = Array.from(new Set(base));
 
     // 索引未就绪时只拉当前月，避免误请求不存在的上月 JSON（本地 dev 会回退 HTML）。
-    if (availableMonths.length === 0) return [currentMonth];
+    if (availableMonths.length === 0) {
+      return view === "latest" ? [currentMonth] : [archiveMonth];
+    }
 
     const matched = months.filter((month) => availableMonths.includes(month));
     if (matched.length > 0) return matched;
 
-    // 当前月份区间无内容时，回退到最近有数据的月份，避免首页空白。
-    return availableMonths.slice(0, view === "latest" ? 2 : 3);
+    if (view === "latest") {
+      // 当前月份区间无内容时，回退到最近有数据的月份，避免首页空白。
+      return availableMonths.slice(0, 2);
+    }
+
+    if (view === "archive") {
+      // 归档页保持单月请求，避免为了兜底把其它月份也拉下来。
+      return [archiveMonth];
+    }
+
+    // 后台页优先把所有可用月份都拉齐，方便编辑完整数据。
+    return availableMonths;
   }, [availableMonths, currentMonth, prevMonth, selectedDate, view]);
 
   const scopedLogs = useMemo(
@@ -737,6 +1424,29 @@ export default function App() {
     const [year, month, day] = selectedDate.split("-").map(Number);
     return new Date(Date.UTC(year, month - 1, day, 12));
   }, [selectedDate]);
+  const adminReady = useMemo(
+    () => monthsNeeded.every((month) => monthLogs[month] !== undefined),
+    [monthLogs, monthsNeeded],
+  );
+
+  function authenticateAdmin(username: string, password: string) {
+    const ok = username === adminUsername && password === adminPassword;
+    if (!ok) return false;
+    setAdminAuthenticated(true);
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem(adminSessionKey, "1");
+    }
+    setView("admin");
+    return true;
+  }
+
+  function logoutAdmin() {
+    setAdminAuthenticated(false);
+    if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem(adminSessionKey);
+    }
+    setView("latest");
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -809,8 +1519,13 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     if (view === "archive") {
       params.set("date", selectedDate);
+      params.delete("mode");
+    } else if (view === "admin") {
+      params.set("mode", "admin");
+      params.delete("date");
     } else {
       params.delete("date");
+      params.delete("mode");
     }
     const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}${window.location.hash}`;
     window.history.replaceState({}, "", next);
@@ -832,7 +1547,10 @@ export default function App() {
     if (typeof window === "undefined") return;
     const handlePopState = () => {
       const value = new URLSearchParams(window.location.search).get("date");
-      if (value && isValidDateKey(value)) {
+      const mode = new URLSearchParams(window.location.search).get("mode");
+      if (mode === "admin") {
+        setView("admin");
+      } else if (value && isValidDateKey(value)) {
         setSelectedDate(value);
         setView("archive");
       } else {
@@ -875,25 +1593,42 @@ export default function App() {
         >
           归档日历
         </button>
+        <button
+          className={view === "admin" ? "active" : ""}
+          onClick={() => setView("admin")}
+          type="button"
+        >
+          日志后台
+        </button>
       </div>
 
-      <div className={view === "latest" ? "workspace latest-workspace" : "workspace"}>
-        <FilterPanel
-          onQuery={setQuery}
-          query={query}
-          resultCount={view === "latest" ? latestLogs.length : archiveLogs.length}
-          suggestedTags={suggestedTags}
-        />
+      <div className={view === "admin" ? "workspace admin-workspace" : view === "latest" ? "workspace latest-workspace" : "workspace"}>
+        {view !== "admin" && (
+          <FilterPanel
+            onQuery={setQuery}
+            query={query}
+            resultCount={view === "latest" ? latestLogs.length : archiveLogs.length}
+            suggestedTags={suggestedTags}
+          />
+        )}
 
         {view === "latest" ? (
           <DailyDigest items={latestLogs} latestUpdated={latestUpdated} />
-        ) : (
+        ) : view === "archive" ? (
           <Archive
             activeDate={archiveActiveDate}
             availableMonths={availableMonths}
             items={archiveLogs}
             onSelectDate={setSelectedDate}
             selectedDate={selectedDate}
+          />
+        ) : (
+          <LogAdmin
+            isAuthenticated={adminAuthenticated}
+            isReady={adminReady}
+            items={sortLogsDesc(scopedLogs)}
+            onAuthenticate={authenticateAdmin}
+            onLogout={logoutAdmin}
           />
         )}
       </div>
